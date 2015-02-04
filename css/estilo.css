@@ -1,0 +1,92 @@
+body{
+	background: url(../images/background.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	margin:0px;
+}
+
+/*#screen{
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}*/
+
+.oculto{
+	display: none;
+}
+
+
+.lineSpacer{
+	height:20px;
+}
+
+
+.clearFix {
+    display: inline-block;
+    height: 1%;
+    width: 100%;
+}
+
+.continuo{
+	white-space: nowrap;
+	display: inline-block;
+}
+
+.accion{
+	padding-right: 5px;
+	display:inline-block;
+	cursor: pointer;
+}
+
+#identificarse-registrarse{
+	float:right;
+}
+
+#menu{
+	padding-bottom: 3.5em;
+	font-size: 1.5em;
+}
+
+.nav-pills{
+	height: 1px !important;
+}
+
+.dropdown-toggle{
+	color:#FFFFFF!important;
+	background-color: transparent!important;
+}
+
+.dropdown-toggle:hover{
+	color:#FFFFFF!important;
+	background-color: rgba(0,0,0,0.1)!important;
+}
+
+.dropdown.open{
+	color:#FFFFFF!important;
+	background-color: rgba(0,0,0,0.1)!important;
+}
+
+.logo{
+	width: 120px; 
+	height: 50px;
+}
+
+.dropdown-menu{
+	background-color: #FF6600!important;
+}
+
+.divider{
+	background-color: rgba(0,0,0,0.1)!important;
+}
+
+.dropdown-menu > li > a:hover {
+    background-image: none!important;
+    background-color: rgba(0,0,0,0.1)!important;
+}
+
+.navbar-fixed-top{
+	background: url(../images/banner.jpg) no-repeat center center fixed; 
+	height: 80px!important;
+}

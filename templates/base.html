@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+    <head>
+        {% block head %}
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="css/estilo.css" />
+        <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
+        <script type="text/javascript" src="js/funciones.js"></script>  
+
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-theme.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <title>{% block title %}{% endblock %} - GWA</title>         
+        {% endblock %}
+    </head>
+    <body>
+        {% if usuario == '' %}
+            {{ include('identificarse.html') }}
+        {% endif %}    
+        <div id="menu">
+           <!-- Fixed navbar -->
+            <nav class="navbar navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="#"><img class="logo" src="./images/logo.png"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+
+                    <ul class="nav nav-pills">                    
+                        {% for categoria in categorias %}
+                            <li class="dropdown">
+                              <a id="{{categoria.id}}" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                {{categoria.nombre}}<span class="caret"></span>
+                              </a>
+                              <ul class="dropdown-menu" role="menu">
+                              {% for hija in categoria.hijas %}
+                                <li><a href="./index.php?seccion=categorias&amp;categoria={{hija.id}}">{{hija.nombre}}</a></li>
+                                <li class="divider"></li>
+                              {% endfor %}
+                              </ul>
+                            </li>
+                        {% endfor %}
+                    {% block menu %}
+                    {% endblock %}
+                  </ul>
+                  <ul id="identificarse-registrarse" class="nav navbar-nav">
+                    {% if usuario == '' %}
+                        <li id="identificarse"><a id="modalIdentificarse" type="button" href="#" data-toggle="modal" data-target="#formIdentificarse">Identificarse</a></li>
+                    {% else %}
+                        <li id="identificarse"><a href="./index.php?seccion=salir">Salir</a></li>         
+                    {% endif %}                  
+                  </ul>  
+                </div>
+              </div>
+              </div>
+            </nav>
+        </div>    
+        <div id="screen">            
+            <script>
+                $( document ).ready(function() {    
+                    {% if seccion == '' %}
+                        $("#inicio").addClass("active");        
+                    {% else %}
+                        $("#{{ seccion }}").addClass("active");        
+                    {% endif %}
+                    {% if subseccion != '' %}
+                        $("#{{ subseccion }}").addClass("active");        
+                    {% endif %}
+                });
+            </script>
+
+            <div class="clearFix"></div>
+
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    {{ error }}
+                </div>
+            {% endif %}
+            
+            <div id="contenido">
+                {% block contenido %}
+                {% endblock %}
+            </div>
+
+            <div id="loading" class="oculto">
+            </div>
+
+            <div id="footer">
+                {% block footer %}
+                    &copy; Copyright 2014
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

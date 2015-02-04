@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="css/home.css" />
+	<script src="./js/home.js"></script>
+{% endblock %}
+
+{% block title %}
+	INICIO
+{% endblock %}
+
+{% block menu %}
+	<li class="dropdown">
+	  <a class="dropdown-toggle" href="./index.php?seccion=general">General</a>
+	</li>
+	<li class="dropdown">
+	  <a class="dropdown-toggle" href="./index.php?seccion=nueva_categoria">Nueva Categoria</a>
+	</li>
+	<li class="dropdown">
+	  <a class="dropdown-toggle" href="./index.php?seccion=gestionar_categorias">Gestionar Categorias</a>
+	</li>
+{% endblock %}
+
+
+{% block contenido %}
+
+{% if error %}
+	<div class="alert alert-error" role="alert">
+		{{ error }}
+	</div>
+{% endif %}
+
+{% if success %}
+	<div class="alert alert-success" role="alert">
+		{{ error }}
+	</div>
+{% endif %}
+
+{% endblock %}

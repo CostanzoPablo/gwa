@@ -1,0 +1,53 @@
+{% extends "administrar.html" %}
+
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="css/categoria.css" />
+	<script src="./js/nueva_categoria.js"></script>
+{% endblock %}
+
+{% block contenido %}
+	{{ parent() }}
+<div class="formulario">
+	<form method="post" action="./index.php?seccion=nueva_categoria&amp;crear=ok" method="post">
+		<table cass="tablaFormulario">
+		<tr>
+		<td colspan="2">
+			<h3>NUEVA CATEGORIA</h3>
+		</td>
+		</tr>
+		<tr>
+			<td>
+				NOMBRE DEL CATEGORIA
+			</td>
+			<td>
+				<input type="text" name="nombre" placeholder="Nombre de la Categoria">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				CATEGORIA PADRE
+			</td>
+			<td>
+				<select name="padre">
+					<option value="">SIN PADRE</option>
+					{% for padre in padresPrincipales %}
+						<option value="{{padre.id}}">{{ padre.camino }}
+						{% if padre.camino %}
+							->
+						{% endif %}
+						{{padre.nombre}}
+						</option>
+					{% endfor %}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="CREAR CATEGORIA">
+			</td>
+		</tr>
+		</table>
+	</form>
+</div>
+{% endblock %}	

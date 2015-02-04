@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="css/modulos.css" />
+	<script src="./js/modulos.js"></script>
+{% endblock %}
+
+{% block title %}
+	INICIOOO
+{% endblock %}
+
+{% block contenido %}
+
+{{ include('carousel.html') }}
+
+
+
+<div id="contenedor">
+	{% for modulo in modulos %}
+		<hr>
+		<div id="bloque1">{{modulo.titulo}}</div>
+		<div id="bloque2" style="width:{{modulo.anchoTexto}}%; float:{{modulo.alineacion}}">{{modulo.texto}}</div>
+		{% if modulo.imagen %}
+			<div id="bloque3" style="background-size: 100% auto; background-repeat: no-repeat; width: {{modulo.anchoImagen}}%; height:{{modulo.altoImagen}}%; background-image: url('{{modulo.imagen}}');	background-position: center;"></div>
+		{% endif %}					
+		{% if modulo.video %}
+		<div id="bloque4" style="width:{{modulo.anchoVideo}}%; height:{{modulo.altoVideo}}%">
+			<iframe width="100%" height="100%" src="{{modulo.video}}" frameborder="0" allowfullscreen></iframe>
+			</div>
+		{% endif %}
+	{% endfor %}
+</div>
+
+{% endblock %}

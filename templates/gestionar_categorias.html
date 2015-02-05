@@ -54,9 +54,12 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center">
+			<td align="center">
 				<input type="submit" value="EDITAR CATEGORIA">
 			</td>
+			<td align="center">
+				<a href="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;eliminarCategoria=true"><span class="glyphicon glyphicon-trash eliminar" aria-hidden="true"></span></a>
+			</td>			
 		</tr>
 		</table>
 	</form>
@@ -186,9 +189,11 @@
 	</table>
 {% endif %}
 
+<div id="gestionarModulos" class="oculto">
 {% for modulo in modulos %}
+<hr>
 		<form method="post" action="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;editarModulo={{modulo.id}}" enctype="multipart/form-data">
-		<table id="gestionarModulos" class="tablaFormulario oculto">	
+		<table  class="tablaFormulario">	
 		<tr>
 			<td>
 				TITULO
@@ -310,9 +315,9 @@
 		</tr>					
 		</table>
 		</form>
-	</div>
 {% endfor %}
-
+</div>
+</div>
 {% else %}
 <form method="get" action="./index.php?seccion=gestionar_categorias" >
 <input type="text" name="seccion" value="gestionar_categorias" class="oculto">

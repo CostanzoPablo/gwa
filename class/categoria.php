@@ -77,10 +77,7 @@ class Categoria extends Conectar{
 	}
 
 	public function eliminar(){
-		$query = $this->db->prepare("UPDATE categorias SET baja = :baja WHERE id = '$this->id'");		
-		$query->execute(array(':baja' => 1));
-		$this->baja = 1;
-		return $this;
+		$this->db->exec("DELETE FROM categorias WHERE id = '$this->id'");	
 	}
 
 	public function listarPadres(){

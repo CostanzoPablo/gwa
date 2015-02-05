@@ -30,9 +30,9 @@ if ($html["error"] == null){
 			}
 			if (isset($_GET["editarModulo"])){
 				$editarModulo = (new Modulo)->buscarPorId($_GET["editarModulo"]);
-				unlink($editarModulo->imagen);
 				$editarModulo->actualizar($_POST["titulo"], $_POST["alineacion"], $_POST["anchoTexto"], $_POST["anchoVideo"], $_POST["altoVideo"], $_POST["orden"], $_POST["texto"], $_POST["video"]);
 				if ($_FILES["imagen"] != null){
+					unlink($editarModulo->imagen);
 					$editarModulo->guardarImagen($_FILES["imagen"], $_POST["anchoImagen"], $_POST["altoImagen"]);
 				}
 			}
@@ -42,6 +42,18 @@ if ($html["error"] == null){
 				$eliminarModulo->eliminar();
 			}
 			$html["modulos"] = (new Modulo)->buscarPorCategoria($categoria->id);
+			if (isset($_GET["eliminarCategoria"])){			
+				$eliminarModulos = (new Modulo)->buscarPorCategoria($categoria->id);
+				foreach ($eliminarModulos as $key => $value) {
+					$eliminarModulo = (new Modulo)->buscarPorId($value["id"]);
+					unlink($eliminarModulo->imagen);
+					$eliminarModulo->eliminar();
+				}
+				$categoria->eliminar();
+				$html["categoria"] = null;
+				$html["padres"] = (new Categoria)->listarCompleto();
+			}			
+			
 		}
 	}
 }	

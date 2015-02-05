@@ -1,0 +1,55 @@
+{% extends "administrar.html" %}
+
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="css/general.css" />
+	<script src="./js/general.js"></script>
+{% endblock %}
+
+{% block contenido %}
+	{{ parent() }}
+
+	<div class="formulario">
+		<form method="post" action="./index.php?seccion=general" method="post" enctype="multipart/form-data">
+			<table id="gestionarCategoria" class="tablaFormulario">
+			<tr>
+				<td>
+					Fondo General (.png)
+				</td>
+				<td>
+					<input type="file" name="background">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Fondo del Banner (.png)
+				</td>
+				<td>
+					<input type="file" name="banner">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Logo (.png)
+				</td>
+				<td>
+					<input type="file" name="logo">
+				</td>
+			</tr>	
+			<tr>
+				<td>
+					Color Fuente Banner
+				</td>
+				<td>
+					<input type="text" name="color_fuente_banner" value="{{general.color_fuente_banner}}">
+				</td>
+			</tr>							
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="GUARDAR">
+				</td>
+			</tr>
+			</table>
+		</form>
+	</div>
+{% endblock %}	

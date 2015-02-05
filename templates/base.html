@@ -31,11 +31,11 @@
                         {% for categoria in categorias %}
                             <li class="dropdown">
                               <a id="{{categoria.id}}" class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                {{categoria.nombre}}<span class="caret"></span>
+                                <font color="#{{general.color_fuente_banner}}">{{categoria.nombre}}<span class="caret"></span></font>
                               </a>
                               <ul class="dropdown-menu" role="menu">
                               {% for hija in categoria.hijas %}
-                                <li><a href="./index.php?seccion=categorias&amp;categoria={{hija.id}}">{{hija.nombre}}</a></li>
+                                <li><a href="./index.php?seccion=categorias&amp;categoria={{hija.id}}"><font color="#{{general.color_fuente_banner}}">{{hija.nombre}}</font></a></li>
                                 <li class="divider"></li>
                               {% endfor %}
                               </ul>

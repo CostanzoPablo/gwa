@@ -10,6 +10,10 @@ switch($_GET["seccion"]){
 		include('./identificarse.php');
 		echo json_encode($html);
 		break;	
+	case 'general':
+		include('./general.php');
+		echo $twig->render('general.html', $html);
+		break;		
 	case 'administrar':
 		include('./administrar.php');
 		echo $twig->render('administrar.html', $html);

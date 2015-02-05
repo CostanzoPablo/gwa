@@ -12,5 +12,8 @@
 	    'cache' => false,
 	));
 
+	require_once('./class/general.php');
+	$html["general"] = (new General)->buscar();
+	
 	include('./controller_base.php');
 ?>

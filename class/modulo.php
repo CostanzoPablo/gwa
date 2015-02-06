@@ -42,6 +42,13 @@ class Modulo extends Conectar{
 		$query = $this->db->prepare("SELECT * FROM modulos WHERE categoria = :categoria ORDER by orden ASC");		
 		$query->execute(array(':categoria' => $id_categoria));
 		foreach ($query->fetchAll() as $row){
+			if ($row["alineacion"] == null){
+				$directory = './modulos/'.$row["id"].'/';
+				$images = glob($directory . "*.*");
+				foreach($images as $image){
+				  $row["imagenes"][] = $image;
+				}
+			}
 			$modulos[] = $row;
 		}			
 		return $modulos;
@@ -61,6 +68,14 @@ class Modulo extends Conectar{
 		$this->texto = $texto;
 		$this->imagen = $imagen;
 		$this->video = $video;		
+		return $this;
+	}
+
+	public function orden($orden){
+		$query = $this->db->prepare("UPDATE modulos SET orden = :orden WHERE id = '$this->id'");		
+		$query->execute(array(':orden'=>$orden));
+		$this->orden = $orden;
+
 		return $this;
 	}
 

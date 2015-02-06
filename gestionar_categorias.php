@@ -22,6 +22,55 @@ if ($html["error"] == null){
 					$categoria->editarPadre($_POST["padre"]);
 				}
 			}
+			if (isset($_GET["editarGaleria"])){
+				$modulo = (new Modulo)->buscarPorId($_GET["editarGaleria"]);
+				$modulo->orden($_POST["orden"]);
+				for($i=0; $i<count($_FILES['imagenes']['name']); $i++) {
+				  //Get the temp file path
+				  $tmpFilePath = $_FILES['imagenes']['tmp_name'][$i];
+
+				  //Make sure we have a filepath
+				  if ($tmpFilePath != ""){
+				    //Setup our new file path
+				    if (!file_exists('modulos')) {
+		    			mkdir('modulos', 0777, true);
+					}
+					if (!file_exists('modulos/'.$modulo->id)) {
+		    			mkdir('modulos/'.$modulo->id, 0777, true);
+					}					
+				    $newFilePath = './modulos/'.$modulo->id.'/'.$_FILES['imagenes']['name'][$i];
+
+				    //Upload the file into the temp dir
+				    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+				    	//ok
+				    }
+				  }
+				}
+			}
+			if (isset($_GET["agregarGaleria"])){
+				$nuevoModulo = (new Modulo)->nuevo($categoria->id, '', '', '', '', '', $_POST["orden"], '', '');
+				for($i=0; $i<count($_FILES['imagenes']['name']); $i++) {
+				  //Get the temp file path
+				  $tmpFilePath = $_FILES['imagenes']['tmp_name'][$i];
+
+				  //Make sure we have a filepath
+				  if ($tmpFilePath != ""){
+				    //Setup our new file path
+				    if (!file_exists('modulos')) {
+		    			mkdir('modulos', 0777, true);
+					}
+					if (!file_exists('modulos/'.$nuevoModulo->id)) {
+		    			mkdir('modulos/'.$nuevoModulo->id, 0777, true);
+					}					
+				    $newFilePath = './modulos/'.$nuevoModulo->id.'/'.$_FILES['imagenes']['name'][$i];
+
+				    //Upload the file into the temp dir
+				    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+				    	//ok
+				    }
+				  }
+				}
+			}
 			if (isset($_GET["agregarModulo"])){
 				$nuevoModulo = (new Modulo)->nuevo($categoria->id, $_POST["titulo"], $_POST["alineacion"], $_POST["anchoTexto"], $_POST["anchoVideo"], $_POST["altoVideo"], $_POST["orden"], $_POST["texto"], $_POST["video"]);
 				if ($_FILES["imagen"] != null){

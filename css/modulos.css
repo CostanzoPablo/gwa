@@ -37,3 +37,34 @@
 	margin:0;
 	padding:0;	
 }
+
+.galeria{
+	display: inline-block;
+	white-space: pre-wrap;
+	padding-left: 3em;
+	padding-right: 3em;
+}
+
+/* unvisited link */
+.galeria a:link {
+    color: transparent;
+}
+
+/* visited link */
+.galeria a:visited {
+    color: transparent;
+}
+
+/* mouse over link */
+.galeria a:hover {
+    color: transparent;
+}
+
+/* selected link */
+.galeria a:active {
+    color: transparent;
+}
+
+.galeria:hover{
+	background-color: rgba(0,0,0,0.3);
+}

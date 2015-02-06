@@ -1,6 +1,6 @@
 .formulario{
-	width:50%;
-	margin-left: 25%;
+	width:90%;
+	margin-left: 5%;
 	background-color: rgba(0,0,0,0.3);
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -23,4 +23,35 @@
 	font-size: 3em;
 	float:center;
 	color:#AA0000;
+}
+
+.galeria{
+	display: inline-block;
+	white-space: pre-wrap;
+	padding-left: 3em;
+	padding-right: 3em;
+}
+
+/* unvisited link */
+.galeria a:link {
+    color: transparent;
+}
+
+/* visited link */
+.galeria a:visited {
+    color: transparent;
+}
+
+/* mouse over link */
+.galeria a:hover {
+    color: transparent;
+}
+
+/* selected link */
+.galeria a:active {
+    color: transparent;
+}
+
+.galeria:hover{
+	background-color: rgba(0,0,0,0.3);
 }

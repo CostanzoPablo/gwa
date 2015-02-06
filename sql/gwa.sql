@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-02-2015 a las 18:29:18
+-- Tiempo de generación: 06-02-2015 a las 13:24:31
 -- Versión del servidor: 5.5.40-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.5
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `modulos` (
   `video` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `modulos`
@@ -95,17 +95,8 @@ CREATE TABLE IF NOT EXISTS `modulos` (
 
 INSERT INTO `modulos` (`id`, `categoria`, `titulo`, `alineacion`, `anchoTexto`, `anchoImagen`, `altoImagen`, `anchoVideo`, `altoVideo`, `orden`, `texto`, `imagen`, `video`) VALUES
 (1, 4, 'Titulo del modulo', 'left', 100, 100, 100, 1, 1, 2, 'Texto Opcional', 'modulos/1423158870.jpg', ''),
-(2, 4, 'Titulo del modulo 2', 'left', 50, 50, 50, 1, 1, 1, 'Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto ', 'modulos/1423158857.jpg', '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `template`
---
-
-CREATE TABLE IF NOT EXISTS `template` (
-  `background` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(2, 4, 'Titulo del modulo 2', 'left', 50, 50, 50, 1, 1, 1, 'Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto ', 'modulos/1423158857.jpg', ''),
+(6, 4, '', '', 0, 0, 0, 0, 0, 0, '', '', '');
 
 -- --------------------------------------------------------
 

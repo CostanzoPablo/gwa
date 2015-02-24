@@ -20,7 +20,7 @@
 }
 
 .eliminar{
-	font-size: 3em;
+	font-size: 1.5em;
 	float:center;
 	color:#AA0000;
 }
@@ -54,4 +54,12 @@
 
 .galeria:hover{
 	background-color: rgba(0,0,0,0.3);
+}
+
+.edicion{
+	vertical-align: top;
+}
+
+.queEdito{
+	width: 7em;
 }

@@ -11,7 +11,7 @@ function getExtension($str) {
 }
 
 class Modulo extends Conectar{
-	public $id, $titulo, $alineacion, $anchoTexto, $anchoImagen, $anchoVideo, $orden, $texto, $imagen, $video;
+	public $id, $titulo, $alineacion, $anchoTexto, $anchoImagen, $anchoVideo, $orden, $texto, $imagen, $video, $colorHr;
 
     public function __construct() {
     	$pdo = new Conectar();
@@ -33,6 +33,7 @@ class Modulo extends Conectar{
 			$this->texto = $row["texto"];
 			$this->imagen = $row["imagen"];
 			$this->video = $row["video"];
+			$this->colorHr = $row["colorHr"];
 		}			
 		return $this;
 	}
@@ -46,7 +47,9 @@ class Modulo extends Conectar{
 				$directory = './modulos/'.$row["id"].'/';
 				$images = glob($directory . "*.*");
 				foreach($images as $image){
-				  $row["imagenes"][] = $image;
+					$imageAdapter["image"] = $image;
+					$imageAdapter["imagen"] = (new Imagen)->buscarPorModuloConImagen($row["id"], $image);
+					$row["imagenes"][] = $imageAdapter;
 				}
 			}
 			$modulos[] = $row;
@@ -54,10 +57,10 @@ class Modulo extends Conectar{
 		return $modulos;
 	}
 
-	public function nuevo($categoria, $titulo, $alineacion, $anchoTexto, $anchoVideo, $altoVideo, $orden, $texto, $video){
-		$sql = "INSERT INTO modulos (categoria, titulo, alineacion, anchoTexto, anchoVideo, altoVideo, orden, texto, video) VALUES (:categoria, :titulo, :alineacion, :anchoTexto, :anchoVideo, :altoVideo, :orden, :texto, :video)";
+	public function nuevo($categoria, $titulo, $alineacion, $anchoTexto, $anchoVideo, $altoVideo, $orden, $texto, $video, $colorHr){
+		$sql = "INSERT INTO modulos (categoria, titulo, alineacion, anchoTexto, anchoVideo, altoVideo, orden, texto, video, colorHr) VALUES (:categoria, :titulo, :alineacion, :anchoTexto, :anchoVideo, :altoVideo, :orden, :texto, :video, :colorHr)";
 		$query = $this->db->prepare( $sql );
-		$query->execute(array(':categoria'=>$categoria, ':titulo'=>$titulo, ':alineacion'=>$alineacion, ':anchoTexto'=>$anchoTexto, ':anchoVideo'=>$anchoVideo, ':altoVideo'=>$altoVideo, ':orden'=>$orden, ':texto'=>$texto, ':video'=>$video));		
+		$query->execute(array(':categoria'=>$categoria, ':titulo'=>$titulo, ':alineacion'=>$alineacion, ':anchoTexto'=>$anchoTexto, ':anchoVideo'=>$anchoVideo, ':altoVideo'=>$altoVideo, ':orden'=>$orden, ':texto'=>$texto, ':video'=>$video, ':colorHr'=>$colorHr));		
 		$this->id = $this->db->lastInsertId();
 		$this->titulo = $titulo;
 		$this->alineacion = $alineacion;
@@ -68,6 +71,7 @@ class Modulo extends Conectar{
 		$this->texto = $texto;
 		$this->imagen = $imagen;
 		$this->video = $video;		
+		$this->colorHr = $colorHr;				
 		return $this;
 	}
 
@@ -79,9 +83,9 @@ class Modulo extends Conectar{
 		return $this;
 	}
 
-	public function actualizar($titulo, $alineacion, $anchoTexto, $anchoVideo, $altoVideo, $orden, $texto, $video){
-		$query = $this->db->prepare("UPDATE modulos SET titulo = :titulo, alineacion = :alineacion, anchoTexto = :anchoTexto, anchoVideo = :anchoVideo, altoVideo = :altoVideo, orden = :orden, texto = :texto, video = :video WHERE id = '$this->id'");		
-		$query->execute(array(':titulo'=>$titulo, ':alineacion'=>$alineacion, ':anchoTexto'=>$anchoTexto, ':anchoVideo'=>$anchoVideo, ':altoVideo'=>$altoVideo, ':orden'=>$orden, ':texto'=>$texto, ':video'=>$video));
+	public function actualizar($titulo, $alineacion, $anchoTexto, $anchoVideo, $altoVideo, $orden, $texto, $video, $colorHr, $anchoImagen, $altoImagen){
+		$query = $this->db->prepare("UPDATE modulos SET titulo = :titulo, alineacion = :alineacion, anchoTexto = :anchoTexto, anchoVideo = :anchoVideo, altoVideo = :altoVideo, orden = :orden, texto = :texto, video = :video, colorHr = :colorHr, anchoImagen = :anchoImagen, altoImagen = :altoImagen WHERE id = '$this->id'");		
+		$query->execute(array(':titulo'=>$titulo, ':alineacion'=>$alineacion, ':anchoTexto'=>$anchoTexto, ':anchoVideo'=>$anchoVideo, ':altoVideo'=>$altoVideo, ':orden'=>$orden, ':texto'=>$texto, ':video'=>$video, ':colorHr'=>$colorHr, ':anchoImagen'=>$anchoImagen, ':altoImagen'=>$altoImagen));
 		$this->titulo = $titulo;
 		$this->alineacion = $alineacion;
 		$this->anchoTexto = $anchoTexto;
@@ -91,7 +95,9 @@ class Modulo extends Conectar{
 		$this->texto = $texto;
 		$this->imagen = $imagen;
 		$this->video = $video;		
-
+		$this->colorHr = $colorHr;	
+		$this->anchoImagen = $anchoImagen;
+		$this->altoImagen = $altoImagen;
 		return $this;
 	}
 

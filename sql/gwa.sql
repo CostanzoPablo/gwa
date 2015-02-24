@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-02-2015 a las 13:24:31
+-- Tiempo de generación: 23-02-2015 a las 22:51:06
 -- Versión del servidor: 5.5.40-0ubuntu0.14.04.1
--- Versión de PHP: 5.5.9-1ubuntu4.5
+-- Versión de PHP: 5.5.9-1ubuntu4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,23 +30,29 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` text NOT NULL,
   `padre` int(11) NOT NULL,
+  `red` int(11) NOT NULL,
+  `blue` int(11) NOT NULL,
+  `green` int(11) NOT NULL,
   `baja` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id`, `nombre`, `padre`, `baja`) VALUES
-(1, 'Autos', 0, 0),
-(2, 'Camionetas', 0, 0),
-(3, 'Camiones', 0, 0),
-(4, 'Volkswagen', 1, 0),
-(5, 'Ford', 1, 0),
-(8, 'Mercedes Benz', 3, 0),
-(11, 'Pepito', 0, 0),
-(12, 'jijiji23', 11, 0);
+INSERT INTO `categorias` (`id`, `nombre`, `padre`, `red`, `blue`, `green`, `baja`) VALUES
+(1, 'Autos', 0, 0, 0, 0, 0),
+(2, 'Camionetas', 0, 0, 0, 0, 0),
+(3, 'Camiones', 0, 0, 0, 0, 0),
+(4, 'Volkswagen', 1, 255, 255, 255, 0),
+(5, 'Ford', 1, 0, 0, 0, 0),
+(8, 'Mercedes Benz', 3, 0, 0, 0, 0),
+(11, 'Pepito', 0, 0, 0, 0, 0),
+(12, 'jijiji23', 11, 0, 0, 0, 0),
+(13, 'Habitaciones', 0, 0, 0, 0, 0),
+(14, 'Dormitorios', 13, 0, 0, 0, 0),
+(15, 'modelna', 13, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -55,15 +61,43 @@ INSERT INTO `categorias` (`id`, `nombre`, `padre`, `baja`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `general` (
-  `color_fuente_banner` text NOT NULL
+  `color_fuente_banner` text NOT NULL,
+  `colorHr` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `general`
 --
 
-INSERT INTO `general` (`color_fuente_banner`) VALUES
-('FFFFFF');
+INSERT INTO `general` (`color_fuente_banner`, `colorHr`) VALUES
+('898989', 'FF6600');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagen`
+--
+
+CREATE TABLE IF NOT EXISTS `imagen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `modulo` int(11) NOT NULL,
+  `titulo` text NOT NULL,
+  `descripcion` text NOT NULL,
+  `imagen` text NOT NULL,
+  `red` int(11) NOT NULL,
+  `green` int(11) NOT NULL,
+  `blue` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Volcado de datos para la tabla `imagen`
+--
+
+INSERT INTO `imagen` (`id`, `modulo`, `titulo`, `descripcion`, `imagen`, `red`, `green`, `blue`) VALUES
+(9, 6, 'Titulo', 'Descripcion', './modulos/6/GNOME-Waves-3-orange.png', 255, 1, 2),
+(10, 6, 'Blanquito', 'MuNIeco Blanco', './modulos/6/abc.jpg', 255, 255, 225);
 
 -- --------------------------------------------------------
 
@@ -85,6 +119,7 @@ CREATE TABLE IF NOT EXISTS `modulos` (
   `texto` text NOT NULL,
   `imagen` text NOT NULL,
   `video` text NOT NULL,
+  `colorHr` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
@@ -93,10 +128,9 @@ CREATE TABLE IF NOT EXISTS `modulos` (
 -- Volcado de datos para la tabla `modulos`
 --
 
-INSERT INTO `modulos` (`id`, `categoria`, `titulo`, `alineacion`, `anchoTexto`, `anchoImagen`, `altoImagen`, `anchoVideo`, `altoVideo`, `orden`, `texto`, `imagen`, `video`) VALUES
-(1, 4, 'Titulo del modulo', 'left', 100, 100, 100, 1, 1, 2, 'Texto Opcional', 'modulos/1423158870.jpg', ''),
-(2, 4, 'Titulo del modulo 2', 'left', 50, 50, 50, 1, 1, 1, 'Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto ', 'modulos/1423158857.jpg', ''),
-(6, 4, '', '', 0, 0, 0, 0, 0, 0, '', '', '');
+INSERT INTO `modulos` (`id`, `categoria`, `titulo`, `alineacion`, `anchoTexto`, `anchoImagen`, `altoImagen`, `anchoVideo`, `altoVideo`, `orden`, `texto`, `imagen`, `video`, `colorHr`) VALUES
+(1, 4, 'Titulo del modulo', 'left', 100, 100, 95, 1, 1, 2, 'Texto Opcional\r\n\r\nenter\r\n\r\nTexto...', 'modulos/1423158870.jpg', '', ''),
+(6, 4, '', '', 0, 0, 0, 0, 0, 0, '', '', '', '');
 
 -- --------------------------------------------------------
 

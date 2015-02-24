@@ -55,10 +55,13 @@ body {
   background-color: #777;
 }
 .carousel-inner > .item > img {
+  display: block;
   position: absolute;
   top: 0;
-  left: 0;
-  min-width: 100%;
+  left: 50%;
+  margin-left: -800px;
+  min-width: 1920px;
+  max-width: 1920px;
   height: 500px;
 }
 

@@ -54,7 +54,7 @@ if ($html["error"] == null){
 		if ($_FILES["logo"] != null){
 			guardarImagen($_FILES["logo"], './images/logo.png');
 		}		
-		$general->actualizar($_POST["color_fuente_banner"]);
+		$general->actualizar($_POST["color_fuente_banner"], $_POST["colorHr"]);
 	}
 	
 	$html["general"] = $general;

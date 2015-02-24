@@ -54,6 +54,16 @@
 			</td>
 		</tr>
 		<tr>
+			<td>
+				COLOR FONDO RGB
+			</td>
+			<td>
+				<input type="text" name="red" value="{{categoria.red}}" size="3">
+				<input type="text" name="green" value="{{categoria.green}}" size="3">
+				<input type="text" name="blue" value="{{categoria.blue}}" size="3">
+			</td>
+		</tr>		
+		<tr>
 			<td align="center">
 				<input type="submit" value="EDITAR CATEGORIA">
 			</td>
@@ -92,6 +102,14 @@
 			<input type="number" min="0" name="orden">
 		</td>
 	</tr>				
+	<tr>
+		<td>
+			COLOR HR
+		</td>
+		<td>
+			<input type="text" name="colorHr">
+		</td>
+	</tr>					
 	<tr>
 		<td valign="top">
 			TEXTO (opcional)
@@ -249,7 +267,15 @@
 			<td>
 				<input type="number" min="0" name="orden" value="{{modulo.orden}}">
 			</td>
-		</tr>				
+		</tr>	
+		<tr>
+			<td>
+				COLOR HR
+			</td>
+			<td>
+				<input type="text" name="colorHr" value="{{modulo.colorHr}}">
+			</td>
+		</tr>							
 		<tr>
 			<td valign="top">
 				TEXTO (opcional)
@@ -377,22 +403,55 @@
 			</tr>
 			<tr>
 				<td colspan="2">
+					<input type="submit" value="AGREGAR IMAGENES">
+				</td>
+			</tr>		
+			</table>
+			</form>
+			<table id="agregarGaleria2" class="tablaFormulario">	
+			<tr>
+				<td colspan="2">
 					{% for imagen in modulo.imagenes %}
-					<div class="galeria"><a href="{{imagen}}" data-lightbox="galeria{{modulo.categoria}}" data-title="Galeria">
-						<div style="background-size: 100% auto; background-repeat: no-repeat; width: 100px; height:100px; background-image: url('{{imagen}}');	background-position: center;"></div>	
-					</a></div>
+					<form method="post" action="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;editarImagenGaleria={{modulo.id}}&amp;imagen={{imagen.image}}">
+					<div class="continuo">
+						<div class="continuo galeria"><a href="{{imagen.image}}" data-lightbox="galeria{{modulo.categoria}}" data-title="Galeria">
+							<div style="background-size: 100% auto; background-repeat: no-repeat; width: 100px; height:100px; background-image: url('{{imagen.image}}');	background-position: center;"></div>	
+						</a></div>
+						<div class="continuo edicion">
+							<div>
+								<div class="queEdito continuo">Titulo: </div><input type="text" name="titulo" value="{{imagen.imagen.titulo}}">
+							</div>
+							<div>
+								<div class="queEdito continuo">Descripcion: </div><input type="text" name="descripcion" value="{{imagen.imagen.descripcion}}">
+							</div>
+							<div>
+								<div class="queEdito continuo">R: </div><input type="text" name="red" value="{{imagen.imagen.red}}">
+							</div>
+							<div>
+								<div class="queEdito continuo">G: </div><input type="text" name="green" value="{{imagen.imagen.green}}">
+							</div>
+							<div>
+								<div class="queEdito continuo">B: </div><input type="text" name="blue" value="{{imagen.imagen.blue}}">
+							</div>
+							<div>
+								<input type="submit" value="Guardar cambios">
+								<a href="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;eliminarImagenGaleria={{modulo.id}}&amp;imagen={{imagen.image}}"><span class="glyphicon glyphicon-trash eliminar" aria-hidden="true"></span></a>								
+							</div>
+						</div>
+					</div>
+					</form>
 					{% endfor %}
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<input type="submit" value="AGREGAR IMAGENES">
+				<td colspan="2" align="center">
+					<a href="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;eliminarModulo={{modulo.id}}"><span class="glyphicon glyphicon-trash eliminar" aria-hidden="true"></span></a>
 				</td>
-			</tr>			
+			</tr>		
 			</table>
-			</form>
 		</div>
 
+		
 	{% endif %}
 {% endfor %}
 </div>

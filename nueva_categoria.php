@@ -15,7 +15,7 @@ if ($html["error"] == null){
 			if ($_POST["nombre"] == null){ 
 				$html["error"] = 'Error. Completar el campo nombre';
 			}else{
-				$categoria = (new Categoria)->nuevo($_POST["nombre"], $_POST["padre"]);
+				$categoria = (new Categoria)->nuevo($_POST["nombre"], $_POST["padre"], $_POST["red"], $_POST["green"], $_POST["blue"]);
 				$_GET["gestionar_categoria"] = $categoria->id;
 			}
 		}

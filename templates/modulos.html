@@ -16,14 +16,15 @@
 
 
 
-<div id="contenedor">
+<div id="contenedor" style="background-color: rgba({{categoria.red}}, {{categoria.green}}, {{categoria.blue}}, 0.2);">
 	{% for modulo in modulos %}
-		<hr>
 		{% if modulo.alineacion %}
 			<div id="bloque1">{{modulo.titulo}}</div>
-			<div id="bloque2" style="width:{{modulo.anchoTexto}}%; float:{{modulo.alineacion}}">{{modulo.texto}}</div>
+			<div id="bloque2" style="width:{{modulo.anchoTexto}}%; float:{{modulo.alineacion}}">{{modulo.texto|nl2br}}</div>
 			{% if modulo.imagen %}
-				<div id="bloque3" style="background-size: 100% auto; background-repeat: no-repeat; width: {{modulo.anchoImagen}}%; height:{{modulo.altoImagen}}%; background-image: url('{{modulo.imagen}}');	background-position: center;"></div>
+			<a href="{{modulo.imagen}}" data-lightbox="galeria{{modulo.imagen}}" data-title="Imagen">
+				<div id="bloque3" style="background-size: 100% auto; background-repeat: no-repeat; width: {{modulo.anchoImagen}}%; height:{{modulo.altoImagen}}%; background-image: url('{{modulo.imagen}}'); background-position: top center;"></div>
+			</a>
 			{% endif %}					
 			{% if modulo.video %}
 			<div id="bloque4" style="width:{{modulo.anchoVideo}}%; height:{{modulo.altoVideo}}%">
@@ -32,11 +33,19 @@
 			{% endif %}
 		{% else %}
 			{% for imagen in modulo.imagenes %}
-			<div class="galeria"><a href="{{imagen}}" data-lightbox="galeria{{modulo.categoria}}" data-title="Galeria">
-				<div style="background-size: 100% auto; background-repeat: no-repeat; width: 200px; height:200px; background-image: url('{{imagen}}');	background-position: center;"></div>	
+			<div class="galeria"><a href="{{imagen.image}}" data-lightbox="galeria{{modulo.categoria}}" data-title="{{imagen.imagen.titulo}} {{imagen.imagen.descripcion}}">
+
+
+				<div class="galeria-imagen" style="background-image: url('{{imagen.image}}');">
+					<div class="galeria-imagenHover" style="background-color: rgba({{imagen.imagen.red}},{{imagen.imagen.green}},{{imagen.imagen.blue}},0.6)!important;">
+					<div class="titulo">{{imagen.imagen.titulo}}</div>
+					<div class="descripcion">{{imagen.imagen.descripcion}}</div>
+					</div>
+				</div>	
 			</a></div>
 			{% endfor %}
 		{% endif %}
+		<div class="hr" style="background-color: #{{modulo.colorHr}};"></div>
 	{% endfor %}
 </div>
 

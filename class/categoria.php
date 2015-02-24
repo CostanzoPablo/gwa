@@ -20,7 +20,7 @@ function cmp($a, $b){
 }
 
 class Categoria extends Conectar{
-	public $id, $nombre, $padre, $baja;
+	public $id, $nombre, $padre, $baja, $red, $blue, $green;
 
     public function __construct() {
     	$pdo = new Conectar();
@@ -36,6 +36,9 @@ class Categoria extends Conectar{
 			$this->nombre = $row["nombre"];
 			$this->padre = $row["padre"];
 			$this->baja = $row["baja"];
+			$this->red = $row["red"];
+			$this->green = $row["green"];
+			$this->blue = $row["blue"];
 		}			
 		return $this;
 	}
@@ -66,13 +69,26 @@ class Categoria extends Conectar{
 		return $this;
 	}
 
-	public function nuevo($nombre, $padre){
-		$sql = "INSERT INTO categorias (nombre, padre) VALUES (:nombre, :padre)";
+	public function editarColorFondo($red, $green, $blue){
+		$query = $this->db->prepare("UPDATE categorias SET red = :red, green = :green, blue = :blue WHERE id = '$this->id'");		
+		$query->execute(array(':red' => $red, ':green' => $green, ':blue' => $blue));
+		$this->padre = $nuevoPadre;
+		$this->red = $red;
+		$this->green = $green;
+		$this->blue = $blue;
+		return $this;
+	}
+
+	public function nuevo($nombre, $padre, $red, $green, $blue){
+		$sql = "INSERT INTO categorias (nombre, padre, red, green, blue) VALUES (:nombre, :padre, :red, :green, :blue)";
 		$query = $this->db->prepare( $sql );
-		$query->execute(array(':nombre'=>$nombre, ':padre'=>$padre));		
+		$query->execute(array(':nombre'=>$nombre, ':padre'=>$padre, 'red'=>$red, 'green'=>$green, 'blue'=>$blue));		
 		$this->id = $this->db->lastInsertId();
 		$this->nombre = $nombre;
 		$this->padre = $padre;
+		$this->red = $red;
+		$this->green = $green;		
+		$this->blue = $blue;
 		return $this;
 	}
 

@@ -4,8 +4,11 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="css/estilo.css" />
         <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
-        <script src="vendor/lightbox/js/lightbox.min.js"></script>
-        <link href="vendor/lightbox/css/lightbox.css" rel="stylesheet" />
+
+<script src="./vendor/lightbox/js/jquery-1.11.0.min.js"></script>
+    <script src="./vendor/lightbox/js/lightbox.min.js"></script>
+<link href="./vendor/lightbox/css/lightbox.css" rel="stylesheet" />
+
         <script type="text/javascript" src="js/funciones.js"></script>  
 
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -33,7 +36,7 @@
                         {% for categoria in categorias %}
                             <li class="dropdown">
                               <a id="{{categoria.id}}" class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <font color="#{{general.color_fuente_banner}}">{{categoria.nombre}}<span class="caret"></span></font>
+                                <font color="#{{general.color_fuente_banner}}">{{categoria.nombre}}</font>
                               </a>
                               <ul class="dropdown-menu" role="menu">
                               {% for hija in categoria.hijas %}
@@ -58,6 +61,7 @@
               </div>
             </nav>
         </div>    
+        <div id="banner-divider" style="background-color:#{{general.colorHr}};"></div>
         <div id="screen">            
             <script>
                 $( document ).ready(function() {    

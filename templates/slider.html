@@ -1,0 +1,53 @@
+{% extends "administrar.html" %}
+
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="css/general.css" />
+	<link rel="stylesheet" href="css/modulos.css" />
+	<link rel="stylesheet" href="css/categoria.css" />
+{% endblock %}
+
+{% block contenido %}
+	{{ parent() }}
+
+	<div id="contenedor contenedorSlider">
+	
+	<div class="formulario formularioSlider">
+		<form method="post" action="./index.php?seccion=slider" method="post" enctype="multipart/form-data">
+			<table id="gestionarCategoria" class="tablaFormulario">
+			<tr>
+				<td>
+					Agregar Imagen 1920x500 PNG|JPG
+				</td>
+				<td>
+					<input type="file" name="slider">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="AGREGAR">
+				</td>
+			</tr>
+			</table>
+		</form>
+	</div>
+
+	
+	{% for image in images %}  
+		<div class="galeria">
+			<a href="{{image.url}}" data-lightbox="slider" data-title="">
+				<div class="galeria-imagen" style="background-image: url('{{image.url}}');">
+					<div class="galeria-imagenHover" style="background-color: rgba(0,0,0,0.6)!important;">
+					</div>
+				</div>	
+			</a>
+
+		<a href="./index.php?seccion=slider&amp;eliminar={{image.url}}">
+			<span class="glyphicon glyphicon-trash eliminar" aria-hidden="true"></span>
+		</a>
+
+		</div>
+	{% endfor %}
+	</div>
+
+{% endblock %}	

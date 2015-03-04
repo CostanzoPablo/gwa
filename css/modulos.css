@@ -1,11 +1,16 @@
 #contenedor{
-	width: 70%;
+	width: 50%;
 	display: inline-block;
 	margin:0;
 	padding:2em;
 	margin-left:15%;
 	background-color: rgba(0,0,0,0.2);
 }
+
+#contenedorSlider{
+	width: 80%;
+}
+
 
 #bloque1{
 	width: 100%;
@@ -83,6 +88,7 @@
 
 .galeria-imagenHover:hover{
 	opacity: 1;
+	transition: opacity 0.7s linear;
 }
 
 .hr{

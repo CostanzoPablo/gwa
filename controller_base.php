@@ -1,4 +1,23 @@
 <?php
+
+function getImagesForSlider(){
+	$images = null;
+	foreach (glob('./slider/*.*') as $key => $value) {
+		$image["url"] = $value;
+		$image["number"] = count($images);
+		if (count($images) == 0){
+			$image["active"] = 'active';
+		}else{
+			$image["active"] = '';
+		}
+		$images[] = $image;
+	}	
+	return $images;
+}
+
+$html["images"] = getImagesForSlider();
+
+
 $html["seccion"] = $_GET["seccion"];
 $html["usuario"] = $_SESSION["usuario"];
 switch($_GET["seccion"]){
@@ -13,7 +32,11 @@ switch($_GET["seccion"]){
 	case 'general':
 		include('./general.php');
 		echo $twig->render('general.html', $html);
-		break;		
+		break;	
+	case 'slider':
+		include('./slider.php');
+		echo $twig->render('slider.html', $html);
+		break;					
 	case 'administrar':
 		include('./administrar.php');
 		echo $twig->render('administrar.html', $html);

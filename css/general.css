@@ -8,6 +8,11 @@
 	margin-top: 1em;
 }
 
+.formularioSlider{
+	width:100%;
+	margin: 0%;
+}
+
 .tablaFormulario{
 	/*border-spacing:10px;*/
 	border-collapse: collapse;

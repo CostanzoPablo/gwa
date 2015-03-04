@@ -3,7 +3,6 @@
 {% block head %}
 	{{ parent() }}
 	<link rel="stylesheet" href="css/general.css" />
-	<script src="./js/general.js"></script>
 {% endblock %}
 
 {% block contenido %}
@@ -36,6 +35,22 @@
 					<input type="file" name="logo">
 				</td>
 			</tr>	
+			<tr>
+				<td>
+					Posicion Logo
+				</td>
+				<td>
+					<select name="float_logo">
+						{% if general.float_logo == "left" %}
+							<option selected value="left">Izquierda</option>
+							<option value="right">Derecha</option>
+						{% else %}
+							<option value="left">Izquierda</option>
+							<option selected value="right">Derecha</option>						
+						{% endif %}
+					</select>
+				</td>
+			</tr>							
 			<tr>
 				<td>
 					Color Fuente Banner

@@ -1,6 +1,5 @@
 <?php
 require_once('./administrar.php');
-require_once('./class/general.php');
 
 function getExtension($str) {
 	$i = strrpos($str,".");
@@ -37,27 +36,33 @@ function guardarImagen($imagen, $ruta){
 			}
 		}
 		$tmp_name = $imagen["tmp_name"];
-        move_uploaded_file($tmp_name, $ruta);
+        move_uploaded_file($tmp_name, $ruta.time().'.'.$extension);
 	}
 }		
 
 if ($html["error"] == null){
-	$general = (new General)->buscar();
 
-	if (isset($_POST["color_fuente_banner"])){
-		if ($_FILES["background"] != null){
-			guardarImagen($_FILES["background"], './images/background.png');
-		}
-		if ($_FILES["banner"] != null){
-			guardarImagen($_FILES["banner"], './images/banner.png');
-		}	
-		if ($_FILES["logo"] != null){
-			guardarImagen($_FILES["logo"], './images/logo.png');
-		}		
-		$general->actualizar($_POST["float_logo"], $_POST["color_fuente_banner"], $_POST["colorHr"]);
+	if (!file_exists('slider')) {
+		mkdir('slider', 0777, true);
 	}
+
+	if ($_FILES["slider"] != null){
+		guardarImagen($_FILES["slider"], './slider/');
+		$html["images"] = getImagesForSlider();
+	}	
+
+	if ($_GET["eliminar"]){
+		$eliminar = false;
+		foreach ($html["images"] as $key => $value) {
+			if ($value["url"] == $_GET["eliminar"]){
+				unlink($value["url"]);
+			}
+		}
+		$html["images"] = getImagesForSlider();
+	}
+
 	
-	$html["general"] = $general;
+
 }
 
 

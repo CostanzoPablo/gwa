@@ -7,6 +7,10 @@ body{
 	margin:0px;
 }
 
+.titulo{
+	padding: 3px 20px;
+}
+
 /*#screen{
     margin-left: auto;
     margin-right: auto;
@@ -103,4 +107,13 @@ body{
 	background-size: 100%;
 	background-position: center top; 
 	/*height: 80px!important;*/
+}
+
+.identificar{
+	font-size: 0.8em;
+	float:center;
+	color:#CCCCCC;
+	opacity: 0.8;
+	width: 1em;
+	height: 1em;
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-02-2015 a las 22:51:06
+-- Tiempo de generación: 04-03-2015 a las 10:46:55
 -- Versión del servidor: 5.5.40-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.6
 
@@ -62,6 +62,7 @@ INSERT INTO `categorias` (`id`, `nombre`, `padre`, `red`, `blue`, `green`, `baja
 
 CREATE TABLE IF NOT EXISTS `general` (
   `color_fuente_banner` text NOT NULL,
+  `float_logo` text NOT NULL,
   `colorHr` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -69,8 +70,8 @@ CREATE TABLE IF NOT EXISTS `general` (
 -- Volcado de datos para la tabla `general`
 --
 
-INSERT INTO `general` (`color_fuente_banner`, `colorHr`) VALUES
-('898989', 'FF6600');
+INSERT INTO `general` (`color_fuente_banner`, `float_logo`, `colorHr`) VALUES
+('898989', 'right', 'FF6600');
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `imagen` (
   `blue` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `imagen`

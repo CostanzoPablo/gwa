@@ -1,6 +1,6 @@
 <?php
 require_once('./administrar.php');
-require_once('./class/general.php');
+require_once('./class/footer.php');
 
 function getExtension($str) {
 	$i = strrpos($str,".");
@@ -42,22 +42,25 @@ function guardarImagen($imagen, $ruta){
 }		
 
 if ($html["error"] == null){
-	$general = (new General)->buscar();
+	$footer = (new Footer)->buscar();
 
-	if (isset($_POST["color_fuente_banner"])){
+	if (isset($_GET["guardar"])){
 		if ($_FILES["background"] != null){
-			guardarImagen($_FILES["background"], './images/background.png');
+			guardarImagen($_FILES["background"], './footer/background.png');
 		}
-		if ($_FILES["banner"] != null){
-			guardarImagen($_FILES["banner"], './images/banner.png');
-		}	
-		if ($_FILES["logo"] != null){
-			guardarImagen($_FILES["logo"], './images/logo.png');
+		if ($_FILES["background1"] != null){
+			guardarImagen($_FILES["background1"], './footer/background1.png');
+		}
+		if ($_FILES["background2"] != null){
+			guardarImagen($_FILES["background2"], './footer/background2.png');
+		}
+		if ($_FILES["background3"] != null){
+			guardarImagen($_FILES["background3"], './footer/background3.png');
 		}		
-		$general->actualizar($_POST["float_logo"], $_POST["color_fuente_banner"], $_POST["colorBotonHover"], $_POST["colorHr"], $_POST["facebook"], $_POST["twitter"], $_POST["google"]);
+		$footer->actualizar($_POST["texto1"], $_POST["link1"], $_POST["texto2"], $_POST["link2"], $_POST["texto3"], $_POST["link3"], $_POST["newsletter"]);
 	}
 	
-	$html["general"] = $general;
+	$html["footer"] = $footer;
 }
 
 

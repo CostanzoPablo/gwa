@@ -55,14 +55,20 @@
 		</tr>
 		<tr>
 			<td>
-				COLOR FONDO RGB
+				COLOR FONDO Ej: 0,0,0,0.7 
 			</td>
 			<td>
-				<input type="text" name="red" value="{{categoria.red}}" size="3">
-				<input type="text" name="green" value="{{categoria.green}}" size="3">
-				<input type="text" name="blue" value="{{categoria.blue}}" size="3">
+				<input type="text" name="rgb" value="{{categoria.rgb}}" size="3">
 			</td>
 		</tr>		
+		<tr>
+			<td>
+				ORDEN Ej: 7
+			</td>
+			<td>
+				<input type="text" name="orden" value="{{categoria.orden}}" size="1">
+			</td>
+		</tr>				
 		<tr>
 			<td align="center">
 				<input type="submit" value="EDITAR CATEGORIA">
@@ -233,6 +239,67 @@
 	</form>
 </div>
 {% endif %}
+
+
+
+
+
+
+
+
+
+<div class="formulario">
+	<table class="tablaFormulario accion" onclick="openClose('gestionarPDF');">
+	<tr>
+		<td>
+			<h3>GESTIONAR PDF</h3>
+		</td>
+	</tr>
+	</table>
+
+<div id="gestionarPDF" class="oculto"> 
+<hr>
+		<div class="formulario">
+			<form method="post" action="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;editarPDF={{categoria.id}}" enctype="multipart/form-data">
+			<table id="agregarGaleria" class="tablaFormulario">	
+			<tr>
+				<td>
+					Nuevo/s PDF
+				</td>
+				<td>
+					<input type="file" name="pdfs[]" multiple="multiple">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="AGREGAR LO/s PDF">
+				</td>
+			</tr>		
+			</table>
+			</form>
+			<table id="agregarPDF2" class="tablaFormulario">	
+			<tr>
+				<td colspan="2">
+					{% for pdf in categoria.pdfs %}
+					<div class="continuo">
+						<div class="continuo">
+						<a href="{{pdf.pdf}}">{{pdf.nombre}}</a>
+						</div>
+						<a href="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;eliminarPDF={{pdf.pdf}}"><span class="glyphicon glyphicon-trash eliminar" aria-hidden="true"></span></a>
+					</div>
+					{% endfor %}
+				</td>
+			</tr>	
+			</table>
+		</div>
+</div>
+
+</div>
+
+
+
+
+
 
 {% if modulos %}
 <div class="formulario">

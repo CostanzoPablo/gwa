@@ -50,7 +50,7 @@ class Modulo extends Conectar{
 					$imageAdapter["image"] = $image;
 					$imageAdapter["imagen"] = (new Imagen)->buscarPorModuloConImagen($row["id"], $image);
 					$row["imagenes"][] = $imageAdapter;
-				}
+				}		
 			}
 			$modulos[] = $row;
 		}			

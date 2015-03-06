@@ -14,6 +14,33 @@ if ($html["error"] == null){
 			$html["error"] = 'Error, no se encuentra la categoria';
 		}else{
 			$html["categoria"] = $categoria;
+			if (isset($_GET["eliminarPDF"])){
+				unlink($_GET["eliminarPDF"]);
+			}
+			if (isset($_GET["editarPDF"])){
+				for($i=0; $i<count($_FILES['pdfs']['name']); $i++) {
+				  //Get the temp file path
+				  $tmpFilePath = $_FILES['pdfs']['tmp_name'][$i];
+
+				  //Make sure we have a filepath
+				  if ($tmpFilePath != ""){
+				    //Setup our new file path
+				    if (!file_exists('pdf')) {
+		    			mkdir('pdf', 0777, true);
+					}
+					if (!file_exists('pdf/'.$_GET["editarPDF"])) {
+		    			mkdir('pdf/'.$_GET["editarPDF"], 0777, true);
+					}					
+				    $newFilePath = './pdf/'.$_GET["editarPDF"].'/'.$_FILES['pdfs']['name'][$i];
+
+				    //Upload the file into the temp dir
+				    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+				    	//ok
+				    }
+				  }
+				}
+			}
+
 			if (isset($_GET["eliminarImagenGaleria"])){
 				$imagen = (new Imagen)->buscarPorModuloConImagen($_GET["eliminarImagenGaleria"], $_GET["imagen"]);
 				if ($imagen->id != null){//crear	
@@ -28,16 +55,19 @@ if ($html["error"] == null){
 					//actualizar...
 					$categoria->editarNombre($_POST["nombre"]);
 					$categoria->editarPadre($_POST["padre"]);
-					$categoria->editarColorFondo($_POST["red"], $_POST["green"], $_POST["blue"]);
+					$categoria->editarColorFondo($_POST["rgb"]);
+					$categoria->editarOrden($_POST["orden"]);
 				}
 			}
+
+
 			if (isset($_GET["editarImagenGaleria"])){
 				//buscar si existe descripcion para la $_GET["imagen"] de la galeria $_GET["editarGaleria"]
 				$imagen = (new Imagen)->buscarPorModuloConImagen($_GET["editarImagenGaleria"], $_GET["imagen"]);
 				if ($imagen->id == null){//crear	
-					$imagen = (new Imagen)->nuevo($_GET["editarImagenGaleria"], $_GET["imagen"], $_POST["titulo"], $_POST["descripcion"], $_POST["red"], $_POST["green"], $_POST["blue"]);
+					$imagen = (new Imagen)->nuevo($_GET["editarImagenGaleria"], $_GET["imagen"], $_POST["titulo"], $_POST["descripcion"], $_POST["rgb"]);
 				}else{//editarla
-					$imagen->editarImagen($_GET["editarImagenGaleria"], $_GET["imagen"], $_POST["titulo"], $_POST["descripcion"], $_POST["red"], $_POST["green"], $_POST["blue"]); 
+					$imagen->editarImagen($_GET["editarImagenGaleria"], $_GET["imagen"], $_POST["titulo"], $_POST["descripcion"], $_POST["rgb"]); 
 				}
 			}
 			if (isset($_GET["editarGaleria"])){
@@ -123,5 +153,5 @@ if ($html["error"] == null){
 			
 		}
 	}
-}	
+}
 ?>

@@ -5,9 +5,11 @@
         <link rel="stylesheet" href="css/estilo.css" />
         <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
 
-<script src="./vendor/lightbox/js/jquery-1.11.0.min.js"></script>
-    <script src="./vendor/lightbox/js/lightbox.min.js"></script>
-<link href="./vendor/lightbox/css/lightbox.css" rel="stylesheet" />
+        <script src="./vendor/lightbox/js/jquery-1.11.0.min.js"></script>
+        <script src="./vendor/lightbox/js/lightbox.min.js"></script>
+        <link href="./vendor/lightbox/css/lightbox.css" rel="stylesheet" />
+
+        <script type="text/javascript" src="js/header.js"></script>  
 
         <script type="text/javascript" src="js/funciones.js"></script>  
 
@@ -18,6 +20,12 @@
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
         <title>{% block title %}{% endblock %} - GWA</title>         
         {% endblock %}
+
+<style>
+.dropdown.open{
+    background-color: rgba({{general.colorBotonHover}})!important;
+}
+</style>
     </head>
     <body>
         {% if usuario == '' %}
@@ -39,7 +47,7 @@
                                 <font color="#{{general.color_fuente_banner}}">{{categoria.nombre}}</font>
                               </a>
                               <ul id="{{categoria.id}}_menu" class="dropdown-menu" role="menu">
-                              <li><div class="titulo"><font color="#{{general.colorHr}}"><b>{{categoria.nombre}}</b></font></div></li>
+                              <li><div class="titulo-menu"><font color="#{{general.colorHr}}"><b>{{categoria.nombre}}</b></font></div></li>
                               {% for hija in categoria.hijas %}
                                 <li class="divider"></li>
                                 <li><a href="./index.php?seccion=categorias&amp;categoria={{hija.id}}"><font color="#{{general.color_fuente_banner}}">{{hija.nombre}}</font></a></li>
@@ -50,19 +58,26 @@
                     {% block menu %}
                     {% endblock %}
                   </ul>
-                  <ul id="identificarse-registrarse" class="nav navbar-nav">
-                    {% if usuario == '' %}
-                        <li id="identificarse"><a id="modalIdentificarse" type="button" href="#" data-toggle="modal" data-target="#formIdentificarse"><span class="glyphicon glyphicon-cog identificar" aria-hidden="true"></span></a></li>
-                    {% else %}
-                        <li id="identificarse"><a href="./index.php?seccion=salir">Salir</a></li>         
-                    {% endif %}                  
-                  </ul>  
+                  <div id="social" class="nav navbar-nav">
+                    {% if general.facebook %}
+                        <div class="social-item"><a href="{{general.facebook}}" target="_blank"><img src="./images/facebook.png" width="40" height="40"></a></div>                  
+                    {% endif %}
+                    {% if general.twitter %}
+                        <div class="social-item"><a href="{{general.twitter}}" target="_blank"><img src="./images/twitter.png" width="40" height="40"></a></div>                  
+                    {% endif %}
+                    {% if general.google %}
+                        <div class="social-item"><a href="{{general.google}}" target="_blank"><img src="./images/google.png" width="40" height="40"></a></div>                  
+                    {% endif %}                                  
+                  </div>  
                 </div>
               </div>
+              <div id="banner-divider" style="background-color:#{{general.colorHr}};"></div>
               </div>
+
             </nav>
+
         </div>    
-        <div id="banner-divider" style="background-color:#{{general.colorHr}};"></div>
+
         <div id="screen">            
             <script>
                 $( document ).ready(function() {    
@@ -94,10 +109,81 @@
             <div id="loading" class="oculto">
             </div>
 
-            <div id="footer">
+            {% if footer.background %}
+                <div id="footer" class="fondoFooter">
+            {% else %}
+                <div id="footer">
+            {% endif %}
                 {% block footer %}
-                    &copy; Copyright 2014
+                    
+                    <table id="tablaFooter" border="0">
+                    <tr>
+                        <td>
+                            {% if footer.texto1 %}
+                            <div class="footerTexto">{{footer.texto1}}</div>
+                            {% endif %}
+                            {% if footer.link1 %}
+                                <a href="{{footer.link1}}" target="_blank">
+                            {% endif %}
+                            {% if footer.background1 %}
+                                <div class="footerImagen" style="background-size: 100% auto; background-repeat: no-repeat; width: 100px; height:100px; background-image: url('{{footer.background1}}'); background-position: top center;"></div>
+                            {% endif %}
+                            {% if footer.link1 %}
+                                </a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if footer.texto2 %}
+                            <div class="footerTexto">{{footer.texto2}}</div>
+                            {% endif %}
+                            {% if footer.link2 %}
+                                <a href="{{footer.link2}}" target="_blank">
+                            {% endif %}
+                            {% if footer.background2 %}
+                                <div class="footerImagen" style="background-size: 100% auto; background-repeat: no-repeat; width: 100px; height:100px; background-image: url('{{footer.background2}}'); background-position: top center;"></div>
+                            {% endif %}
+                            {% if footer.link2 %}
+                                </a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if footer.texto3 %}
+                            <div class="footerTexto">{{footer.texto3}}</div>
+                            {% endif %}
+                            {% if footer.link3 %}
+                                <a href="{{footer.link3}}" target="_blank">
+                            {% endif %}
+                            {% if footer.background3 %}
+                                <div class="footerImagen" style="background-size: 100% auto; background-repeat: no-repeat; width: 100px; height:100px; background-image: url('{{footer.background3}}'); background-position: top center;"></div>
+                            {% endif %}
+                            {% if footer.link3 %}
+                                </a>
+                            {% endif %}
+                        </td>       
+                        <td>
+                            {% if footer.newsletter %}
+                                <div class="footerNewsletter">
+                                <form method="post" action="./index.php?seccion=newsletter">
+                                <div>Suscribite al Newsletter !</div>
+                                <div><input size="20" type="text" name="email"></div>
+                                <input type="submit" value="Suscribirme">
+                                </form>
+                                </div>
+                            {% endif %}
+                        </td>                                                
+                    </tr>                                  
+                    </table>
+
+
                 {% endblock %}
+
+                <ul id="identificarse-registrarse" class="nav navbar-nav">
+                    {% if usuario == '' %}
+                        <li id="identificarse"><a id="modalIdentificarse" type="button" href="#" data-toggle="modal" data-target="#formIdentificarse"><span class="glyphicon glyphicon-cog identificar" aria-hidden="true"></span></a></li>
+                    {% else %}
+                        <li id="identificarse"><a href="./index.php?seccion=salir">Salir</a></li>         
+                    {% endif %}                  
+                  </ul>                  
             </div>
         </div>
     </body>

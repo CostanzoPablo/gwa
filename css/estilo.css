@@ -7,15 +7,13 @@ body{
 	margin:0px;
 }
 
-.titulo{
+.titulo-menu{
 	padding: 3px 20px;
 }
 
-/*#screen{
-    margin-left: auto;
-    margin-right: auto;
-    width: 95%;
-}*/
+#screen{
+    margin-top: 3.5em;
+}
 
 .oculto{
 	display: none;
@@ -44,6 +42,10 @@ body{
 	cursor: pointer;
 }
 
+#social{
+	float:right;
+}
+
 #identificarse-registrarse{
 	float:right;
 }
@@ -51,6 +53,7 @@ body{
 #menu{
 	padding-bottom: 3.5em;
 	font-size: 1em;
+	line-height: 2.8!important;
 }
 
 .nav-pills{
@@ -74,17 +77,19 @@ body{
 
 .dropdown-toggle:hover{
 	color:#FFFFFF!important;
-	background-color: rgba(0,0,0,0.1)!important;
+	/*background-color: rgba(0,0,0,0.1)!important;*/
 }
 
 .dropdown.open{
 	color:#FFFFFF!important;
-	background-color: rgba(0,0,0,0.1)!important;
+	/*background-color: rgba(0,0,0,0.1)!important;*/
+margin-bottom: -1.5em !important;
+padding-bottom: 1.5em !important;	
 }
 
 .logo{
-	width: 120px; 
-	height: 40px;
+	/*width: 120px; 
+	height: 40px;*/
 }
 
 .dropdown-menu{
@@ -107,6 +112,7 @@ body{
 	background-size: 100%;
 	background-position: center top; 
 	/*height: 80px!important;*/
+	background-size: 100% 100%;
 }
 
 .identificar{
@@ -116,4 +122,41 @@ body{
 	opacity: 0.8;
 	width: 1em;
 	height: 1em;
+}
+
+.social-item{
+	margin-top:1em;
+	display: inline-block;
+}
+
+.social-item:hover{
+	opacity: 0.5;
+}
+
+#tablaFooter{
+	margin-left: 10%;
+	width: 80%;
+	text-align: justify;
+}
+
+.footerTexto{
+
+}
+
+.footerImagen{
+	width: 100px;
+	height: 100px;
+}
+
+.fondoFooter{
+	background: url('../footer/background.png') no-repeat center center;
+	background-size: 100%;
+	background-position: center top; 
+	/*height: 80px!important;*/
+	background-size: 100% 100%;
+}
+
+#contenido{
+	min-height: 400px;
+	margin-bottom: 2em;
 }

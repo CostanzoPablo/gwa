@@ -20,7 +20,7 @@ function cmp($a, $b){
 }
 
 class Categoria extends Conectar{
-	public $id, $nombre, $padre, $baja, $red, $blue, $green;
+	public $id, $nombre, $padre, $rgb, $orden, $pdfs;
 
     public function __construct() {
     	$pdo = new Conectar();
@@ -35,10 +35,15 @@ class Categoria extends Conectar{
 			$this->id = $row["id"];
 			$this->nombre = $row["nombre"];
 			$this->padre = $row["padre"];
-			$this->baja = $row["baja"];
-			$this->red = $row["red"];
-			$this->green = $row["green"];
-			$this->blue = $row["blue"];
+			$this->rgb = $row["rgb"];
+			$this->orden = $row["orden"];
+			$directory = './pdf/'.$row["id"].'/';
+			$pdfs = glob($directory . "*.*");
+			foreach($pdfs as $pdf){
+				$pdfAdapter["pdf"] = $pdf;
+				$pdfAdapter["nombre"] = 'nombre...';
+				$this->pdfs[] = $pdfAdapter;
+			}					
 		}			
 		return $this;
 	}
@@ -50,7 +55,7 @@ class Categoria extends Conectar{
 			$this->id = $row["id"];
 			$this->nombre = $row["nombre"];
 			$this->padre = $row["padre"];
-			$this->baja = $row["baja"];
+			$this->orden = $row["orden"];
 		}			
 		return $this;
 	}
@@ -69,26 +74,29 @@ class Categoria extends Conectar{
 		return $this;
 	}
 
-	public function editarColorFondo($red, $green, $blue){
-		$query = $this->db->prepare("UPDATE categorias SET red = :red, green = :green, blue = :blue WHERE id = '$this->id'");		
-		$query->execute(array(':red' => $red, ':green' => $green, ':blue' => $blue));
-		$this->padre = $nuevoPadre;
-		$this->red = $red;
-		$this->green = $green;
-		$this->blue = $blue;
+	public function editarColorFondo($rgb){
+		$query = $this->db->prepare("UPDATE categorias SET rgb = :rgb WHERE id = '$this->id'");		
+		$query->execute(array(':rgb' => $rgb));
+		$this->rgb = $rgb;
 		return $this;
 	}
 
-	public function nuevo($nombre, $padre, $red, $green, $blue){
-		$sql = "INSERT INTO categorias (nombre, padre, red, green, blue) VALUES (:nombre, :padre, :red, :green, :blue)";
+	public function editarOrden($orden){
+		$query = $this->db->prepare("UPDATE categorias SET orden = :orden WHERE id = '$this->id'");		
+		$query->execute(array(':orden' => $orden));
+		$this->orden = $orden;
+		return $this;
+	}
+
+	public function nuevo($nombre, $padre, $rgb){
+		$sql = "INSERT INTO categorias (nombre, padre, rgb, orden) VALUES (:nombre, :padre, :rgb, :orden)";
 		$query = $this->db->prepare( $sql );
-		$query->execute(array(':nombre'=>$nombre, ':padre'=>$padre, 'red'=>$red, 'green'=>$green, 'blue'=>$blue));		
+		$query->execute(array(':nombre'=>$nombre, ':padre'=>$padre, 'rgb'=>'0', 'orden'=>'0'));		
 		$this->id = $this->db->lastInsertId();
 		$this->nombre = $nombre;
 		$this->padre = $padre;
-		$this->red = $red;
-		$this->green = $green;		
-		$this->blue = $blue;
+		$this->rgb = '0';
+		$this->orden = '0';
 		return $this;
 	}
 
@@ -98,8 +106,8 @@ class Categoria extends Conectar{
 
 	public function listarPadres(){
 		$categorias = null;
-		$query = $this->db->prepare("SELECT * FROM categorias WHERE padre = :padre AND baja = :baja");		
-		$query->execute(array(':padre' => 0, ':baja' => 0));
+		$query = $this->db->prepare("SELECT * FROM categorias WHERE padre = :padre ORDER by orden ASC");		
+		$query->execute(array(':padre' => 0));
 		foreach ($query->fetchAll() as $row){
 			$row["hijas"] = $this->dameHijas($row["id"]);
 			$categorias[] = $row;

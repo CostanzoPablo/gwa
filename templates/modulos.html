@@ -3,7 +3,6 @@
 {% block head %}
 	{{ parent() }}
 	<link rel="stylesheet" href="css/modulos.css" />
-	<script src="./js/modulos.js"></script>
 {% endblock %}
 
 {% block title %}
@@ -14,13 +13,23 @@
 
 {{ include('carousel.html') }}
 
+{% if categoria.pdfs %}
+<div id="files" style="background-color:#{{general.colorHr}}">
+	{% for pdf in categoria.pdfs %}
+		<div class="file">
+			<div class="fileImage"><a href="{{pdf.pdf}}"><img src="./images/pdf.png" width="40px" height="50px"></a></div>
+			<div class="fileNombre">{{pdf.nombre}}</div>
+		</div>
+	{% endfor %}
+</div>
+{% endif %}
 
-
-<div id="contenedor" style="background-color: rgba({{categoria.red}}, {{categoria.green}}, {{categoria.blue}}, 0.2);">
+<div id="contenedor" style="background-color: rgba({{categoria.rgb}});">
 	{% for modulo in modulos %}
+		<div class="modulo">
 		{% if modulo.alineacion %}
 			<div id="bloque1">{{modulo.titulo}}</div>
-			<div id="bloque2" style="width:{{modulo.anchoTexto}}%; float:{{modulo.alineacion}}">{{modulo.texto|nl2br}}</div>
+			<div id="bloque2" style="width:{{modulo.anchoTexto}}%; float:{{modulo.alineacion}}" class="bloque-fix-{{modulo.alineacion}}">{{modulo.texto|nl2br}}</div>
 			{% if modulo.imagen %}
 			<a href="{{modulo.imagen}}" data-lightbox="galeria{{modulo.imagen}}" data-title="Imagen">
 				<div id="bloque3" style="background-size: 100% auto; background-repeat: no-repeat; width: {{modulo.anchoImagen}}%; height:{{modulo.altoImagen}}%; background-image: url('{{modulo.imagen}}'); background-position: top center;"></div>
@@ -45,8 +54,8 @@
 			</a></div>
 			{% endfor %}
 		{% endif %}
+		</div>
 		<div class="hr" style="background-color: #{{modulo.colorHr}};"></div>
 	{% endfor %}
 </div>
-
 {% endblock %}

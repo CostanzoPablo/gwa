@@ -17,7 +17,6 @@ function getImagesForSlider(){
 
 $html["images"] = getImagesForSlider();
 
-
 $html["seccion"] = $_GET["seccion"];
 $html["usuario"] = $_SESSION["usuario"];
 switch($_GET["seccion"]){
@@ -36,7 +35,15 @@ switch($_GET["seccion"]){
 	case 'slider':
 		include('./slider.php');
 		echo $twig->render('slider.html', $html);
-		break;					
+		break;		
+	case 'footer':
+		include('./footer.php');
+		echo $twig->render('footer.html', $html);
+		break;	
+	case 'newsletter':
+		include('./newsletter.php');
+		echo $twig->render('newsletter.html', $html);
+		break;											
 	case 'administrar':
 		include('./administrar.php');
 		echo $twig->render('administrar.html', $html);

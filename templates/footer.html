@@ -1,0 +1,132 @@
+{% extends "administrar.html" %}
+
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="css/footer.css" />
+{% endblock %}
+
+{% block contenido %}
+	{{ parent() }}
+
+	<div class="formulario">
+		<form method="post" action="./index.php?seccion=footer&amp;guardar=1" method="post" enctype="multipart/form-data">
+			<table id="gestionarCategoria" class="tablaFormulario">
+			<tr>
+				<td>
+					Texto Footer 1 (opcional)
+				</td>
+				<td>
+					<textarea name="texto1">{{footer.texto1}}</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Imagen 1 (opcional | .png)
+				</td>
+				<td>
+					<input type="file" name="background1">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Link Footer 1 (opcional)
+				</td>
+				<td>
+					<input type="text" name="link1" value="{{footer.link1}}">
+				</td>
+			</tr>	
+			<tr>
+				<td colspan="2">
+				<hr>
+				</td>
+			</tr>				
+
+			<tr>
+				<td>
+					Texto Footer 2 (opcional)
+				</td>
+				<td>
+					<textarea name="texto2">{{footer.texto2}}</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Imagen 2 (opcional | .png)
+				</td>
+				<td>
+					<input type="file" name="background2">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Link Footer 2 (opcional)
+				</td>
+				<td>
+					<input type="text" name="link2" value="{{footer.link2}}">
+				</td>
+			</tr>	
+			<tr>
+				<td colspan="2">
+				<hr>
+				</td>
+			</tr>				
+				
+			<tr>
+				<td>
+					Texto Footer 3 (opcional)
+				</td>
+				<td>
+					<textarea name="texto3">{{footer.texto3}}</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Imagen 3 (opcional | .png)
+				</td>
+				<td>
+					<input type="file" name="background3">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Link Footer 3 (opcional)
+				</td>
+				<td>
+					<input type="text" name="link3" value="{{footer.link3}}">
+				</td>
+			</tr>	
+			<tr>
+				<td colspan="2">
+				<hr>
+				</td>
+			</tr>				
+			<tr>
+				<td>
+					E-mail Newsletter (opcional)
+				</td>
+				<td>
+					<input type="text" name="newsletter" value="{{footer.newsletter}}">
+				</td>
+			</tr>	
+			<tr>
+				<td colspan="2">
+				<hr>
+				</td>
+			</tr>	
+			<tr>
+				<td>
+					Fondo (opcional | .png)
+				</td>
+				<td>
+					<input type="file" name="background">
+				</td>
+			</tr>			
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="GUARDAR">
+				</td>
+			</tr>
+			</table>
+		</form>
+	</div>
+{% endblock %}	

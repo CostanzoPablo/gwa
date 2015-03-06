@@ -11,12 +11,9 @@
 
 {% block contenido %}
 
-{% if saludo %}
-	<div class="alert alert-success" role="alert">
-		{{ saludo }}
-	</div>
+{% if not error %}
+	<div id="newsletter">Fuiste agregado al newsletter correctamente !</div>
 {% endif %}
 
-{{ include('carousel.html') }}
 
 {% endblock %}

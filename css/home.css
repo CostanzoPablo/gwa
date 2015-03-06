@@ -52,3 +52,8 @@
 .detallado{
 	white-space: normal !important;
 }
+
+#newsletter{
+	font-size: 2em;
+	margin-left: 5em;
+}

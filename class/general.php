@@ -2,7 +2,7 @@
 include_once('./class/conectar.php');
 
 class General extends Conectar{
-	public $float_logo, $color_fuente_banner, $colorHr;
+	public $float_logo, $color_fuente_banner, $colorHr, $fontFace;
 
     public function __construct() {
     	$pdo = new Conectar();
@@ -20,13 +20,14 @@ class General extends Conectar{
 			$this->facebook = $row["facebook"];
 			$this->twitter = $row["twitter"];
 			$this->google = $row["google"];
+			$this->fontFace = $row["fontFace"];
 		}			
 		return $this;
 	}
 
-	public function actualizar($float_logo, $color_fuente_banner, $colorBotonHover, $colorHr, $facebook, $twitter, $google){
-		$query = $this->db->prepare("UPDATE general SET float_logo = :float_logo, color_fuente_banner = :color_fuente_banner, colorBotonHover = :colorBotonHover, colorHr = :colorHr, facebook = :facebook, twitter = :twitter, google = :google");		
-		$query->execute(array(':float_logo' => $float_logo, ':color_fuente_banner' => $color_fuente_banner, 'colorBotonHover' => $colorBotonHover, 'colorHr' => $colorHr, 'facebook' => $facebook, 'twitter' => $twitter, 'google' => $google));
+	public function actualizar($float_logo, $color_fuente_banner, $colorBotonHover, $colorHr, $facebook, $twitter, $google, $fontFace){
+		$query = $this->db->prepare("UPDATE general SET float_logo = :float_logo, color_fuente_banner = :color_fuente_banner, colorBotonHover = :colorBotonHover, colorHr = :colorHr, facebook = :facebook, twitter = :twitter, google = :google, fontFace = :fontFace");		
+		$query->execute(array(':float_logo' => $float_logo, ':color_fuente_banner' => $color_fuente_banner, 'colorBotonHover' => $colorBotonHover, 'colorHr' => $colorHr, 'facebook' => $facebook, 'twitter' => $twitter, 'google' => $google, 'fontFace' => $fontFace));
 		$this->float_logo = $float_logo;
 		$this->color_fuente_banner = $color_fuente_banner;
 		$this->colorBotonHover = $colorBotonHover;		
@@ -34,6 +35,7 @@ class General extends Conectar{
 		$this->facebook = $facebook;		
 		$this->twitter = $twitter;		
 		$this->google = $google;				
+		$this->fontFace = $fontFace;						
 		return $this;
 	}
 

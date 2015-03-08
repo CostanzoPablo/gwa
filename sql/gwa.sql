@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-03-2015 a las 00:58:16
+-- Tiempo de generación: 06-03-2015 a las 14:51:17
 -- Versión del servidor: 5.5.40-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.6
 
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `general` (
 --
 
 INSERT INTO `general` (`color_fuente_banner`, `float_logo`, `colorBotonHover`, `colorHr`, `facebook`, `twitter`, `google`, `fontFace`) VALUES
-('000000', 'left', '100,0,0,0.6', 'ffa200', 'facebook.com', 'twitter.com', 'google.com', 'sansation_light.woff');
+('000000', 'left', '100,0,0,0.6', 'ffa200', 'facebook.com', 'twitter.com', 'google.com', 'TrajanPro-Regular_1.otf');
 
 -- --------------------------------------------------------
 

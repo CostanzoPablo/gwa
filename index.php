@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	ini_set('display_errors', false);
-	error_reporting(E_ALL);
+	//error_reporting(E_ALL);
 
 	require_once './vendor/autoload.php';
 	Twig_Autoloader::register();

@@ -46,13 +46,18 @@ body {
                   <a class="navbar-brand" href="#"><img class="logo" src="./images/logo.png"></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-
                     <ul class="nav nav-pills">
-                        {% for categoria in categorias %}
-                            <li id="{{categoria.id}}_li" class="dropdown" onmouseover="dropdown('{{categoria.id}}');">
-                              <a id="{{categoria.id}}" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        {% for categoria in categorias %}                            
+                            {% if categoria.hijas %}
+                                <li id="{{categoria.id}}_li" class="dropdown" onmouseover="dropdown('{{categoria.id}}');">
+                            {% else %}
+                                <li id="{{categoria.id}}_li" class="dropdown" onmouseover="dropdownSinMenu('{{categoria.id}}');" onclick="navegar('./index.php?seccion=categorias&amp;categoria={{categoria.id}}');">
+                            {% endif %}
+                                <a id="{{categoria.id}}" class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <font color="#{{general.color_fuente_banner}}">{{categoria.nombre}}</font>
                               </a>
+
+                              {% if categoria.hijas %}
                               <ul id="{{categoria.id}}_menu" class="dropdown-menu" role="menu">
                               <li><div class="titulo-menu"><font color="#{{general.colorHr}}"><b>{{categoria.nombre}}</b></font></div></li>
                               {% for hija in categoria.hijas %}
@@ -60,6 +65,7 @@ body {
                                 <li><a href="./index.php?seccion=categorias&amp;categoria={{hija.id}}"><font color="#{{general.color_fuente_banner}}">{{hija.nombre}}</font></a></li>
                               {% endfor %}
                               </ul>
+                              {% endif %}
                             </li>
                         {% endfor %}
                     {% block menu %}
@@ -67,13 +73,13 @@ body {
                   </ul>
                   <div id="social" class="nav navbar-nav">
                     {% if general.facebook %}
-                        <div class="social-item"><a href="{{general.facebook}}" target="_blank"><img src="./images/facebook.png" width="40" height="40"></a></div>                  
+                        <div class="social-item"><a href="{{general.facebook}}" target="_blank"><img src="./images/facebook.png"></a></div>                  
                     {% endif %}
                     {% if general.twitter %}
-                        <div class="social-item"><a href="{{general.twitter}}" target="_blank"><img src="./images/twitter.png" width="40" height="40"></a></div>                  
+                        <div class="social-item"><a href="{{general.twitter}}" target="_blank"><img src="./images/twitter.png"></a></div>                  
                     {% endif %}
-                    {% if general.google %}
-                        <div class="social-item"><a href="{{general.google}}" target="_blank"><img src="./images/google.png" width="40" height="40"></a></div>                  
+                    {% if general.youtube %}
+                        <div class="social-item"><a href="{{general.youtube}}" target="_blank"><img src="./images/youtube.png"></a></div>                  
                     {% endif %}                                  
                   </div>  
                 </div>
@@ -116,6 +122,19 @@ body {
             <div id="loading" class="oculto">
             </div>
 
+
+                <ul id="identificarse-registrarse" class="nav navbar-nav">
+                    {% if usuario == '' %}
+                        <li id="identificarse"><a id="modalIdentificarse" type="button" href="#" data-toggle="modal" data-target="#formIdentificarse"><span class="glyphicon glyphicon-cog identificar" aria-hidden="true"></span></a></li>
+                    {% else %}
+                        <li id="identificarse"><a href="./index.php?seccion=salir">Salir</a></li>         
+                    {% endif %}                  
+                  </ul>                  
+            </div>
+        </div>
+
+
+
             {% if footer.background %}
                 <div id="footer" class="fondoFooter">
             {% else %}
@@ -127,7 +146,7 @@ body {
                     <tr>
                         <td>
                             {% if footer.texto1 %}
-                            <div class="footerTexto">{{footer.texto1}}</div>
+                            <div class="footerTexto">{{footer.texto1|nl2br}}</div>
                             {% endif %}
                             {% if footer.link1 %}
                                 <a href="{{footer.link1}}" target="_blank">
@@ -141,7 +160,7 @@ body {
                         </td>
                         <td>
                             {% if footer.texto2 %}
-                            <div class="footerTexto">{{footer.texto2}}</div>
+                            <div class="footerTexto">{{footer.texto2|nl2br}}</div>
                             {% endif %}
                             {% if footer.link2 %}
                                 <a href="{{footer.link2}}" target="_blank">
@@ -155,7 +174,7 @@ body {
                         </td>
                         <td>
                             {% if footer.texto3 %}
-                            <div class="footerTexto">{{footer.texto3}}</div>
+                            <div class="footerTexto">{{footer.texto3|nl2br}}</div>
                             {% endif %}
                             {% if footer.link3 %}
                                 <a href="{{footer.link3}}" target="_blank">
@@ -184,14 +203,6 @@ body {
 
                 {% endblock %}
 
-                <ul id="identificarse-registrarse" class="nav navbar-nav">
-                    {% if usuario == '' %}
-                        <li id="identificarse"><a id="modalIdentificarse" type="button" href="#" data-toggle="modal" data-target="#formIdentificarse"><span class="glyphicon glyphicon-cog identificar" aria-hidden="true"></span></a></li>
-                    {% else %}
-                        <li id="identificarse"><a href="./index.php?seccion=salir">Salir</a></li>         
-                    {% endif %}                  
-                  </ul>                  
-            </div>
-        </div>
+
     </body>
 </html>

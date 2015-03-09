@@ -81,7 +81,7 @@
 	</form>
 </div>
 
-{% if categoria.padre >= 1 %}
+{%if (categoria.padre >= 1) or (categoria.orden == 0) %}
 <div class="formulario">
 	<form method="post" action="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;agregarModulo=true" enctype="multipart/form-data">
 	<table class="tablaFormulario accion" onclick="openClose('agregarModulo');">
@@ -238,11 +238,6 @@
 	</table>
 	</form>
 </div>
-{% endif %}
-
-
-
-
 
 
 
@@ -295,6 +290,23 @@
 </div>
 
 </div>
+
+
+
+
+
+
+{% else %}
+<div>Seteando el ORDEN en 0 activa la edicion de la categoria para ser pagina principal</div>
+{% endif %}
+
+
+
+
+
+
+
+
 
 
 

@@ -19,7 +19,7 @@
 	{% for pdf in categoria.pdfs %}
 		<div class="file">
 			<div class="fileImage continuo"><a href="{{pdf.pdf}}"><img src="./images/pdf.png" width="40px" height="50px"></a></div>
-			<div class="fileNombre continuo">{{pdf.nombre}}</div>
+			<div class="fileNombre continuo"><font color="#{{general.colorPDF}}">{{pdf.nombre}}</font></div>
 		</div>
 	{% endfor %}
 	</div>

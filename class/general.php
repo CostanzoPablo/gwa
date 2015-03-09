@@ -2,7 +2,7 @@
 include_once('./class/conectar.php');
 
 class General extends Conectar{
-	public $float_logo, $color_fuente_banner, $colorHr, $fontFace;
+	public $float_logo, $color_fuente_banner, $colorHr, $colorPDF, $fontFace;
 
     public function __construct() {
     	$pdo = new Conectar();
@@ -17,6 +17,7 @@ class General extends Conectar{
 			$this->color_fuente_banner = $row["color_fuente_banner"];
 			$this->colorBotonHover = $row["colorBotonHover"];
 			$this->colorHr = $row["colorHr"];
+			$this->colorPDF = $row["colorPDF"];
 			$this->facebook = $row["facebook"];
 			$this->twitter = $row["twitter"];
 			$this->youtube = $row["youtube"];
@@ -25,13 +26,14 @@ class General extends Conectar{
 		return $this;
 	}
 
-	public function actualizar($float_logo, $color_fuente_banner, $colorBotonHover, $colorHr, $facebook, $twitter, $youtube, $fontFace){
-		$query = $this->db->prepare("UPDATE general SET float_logo = :float_logo, color_fuente_banner = :color_fuente_banner, colorBotonHover = :colorBotonHover, colorHr = :colorHr, facebook = :facebook, twitter = :twitter, youtube = :youtube, fontFace = :fontFace");		
-		$query->execute(array(':float_logo' => $float_logo, ':color_fuente_banner' => $color_fuente_banner, 'colorBotonHover' => $colorBotonHover, 'colorHr' => $colorHr, 'facebook' => $facebook, 'twitter' => $twitter, 'youtube' => $youtube, 'fontFace' => $fontFace));
+	public function actualizar($float_logo, $color_fuente_banner, $colorBotonHover, $colorHr, $colorPDF, $facebook, $twitter, $youtube, $fontFace){
+		$query = $this->db->prepare("UPDATE general SET float_logo = :float_logo, color_fuente_banner = :color_fuente_banner, colorBotonHover = :colorBotonHover, colorHr = :colorHr, colorPDF = :colorPDF, facebook = :facebook, twitter = :twitter, youtube = :youtube, fontFace = :fontFace");		
+		$query->execute(array(':float_logo' => $float_logo, ':color_fuente_banner' => $color_fuente_banner, 'colorBotonHover' => $colorBotonHover, 'colorHr' => $colorHr, 'colorPDF' => $colorPDF, 'facebook' => $facebook, 'twitter' => $twitter, 'youtube' => $youtube, 'fontFace' => $fontFace));
 		$this->float_logo = $float_logo;
 		$this->color_fuente_banner = $color_fuente_banner;
 		$this->colorBotonHover = $colorBotonHover;		
 		$this->colorHr = $colorHr;		
+		$this->colorPDF = $colorPDF;		
 		$this->facebook = $facebook;		
 		$this->twitter = $twitter;		
 		$this->youtube = $youtube;				

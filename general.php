@@ -54,7 +54,7 @@ if ($html["error"] == null){
 		if ($_FILES["logo"] != null){
 			guardarImagen($_FILES["logo"], './images/logo.png');
 		}		
-		$general->actualizar($_POST["float_logo"], $_POST["color_fuente_banner"], $_POST["colorBotonHover"], $_POST["colorHr"], $_POST["facebook"], $_POST["twitter"], $_POST["youtube"], $_POST["fontFace"]);
+		$general->actualizar($_POST["float_logo"], $_POST["color_fuente_banner"], $_POST["colorBotonHover"], $_POST["colorHr"], $_POST["colorPDF"], $_POST["facebook"], $_POST["twitter"], $_POST["youtube"], $_POST["fontFace"]);
 	}
 	
 	$html["general"] = $general;

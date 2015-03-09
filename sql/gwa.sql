@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-03-2015 a las 14:51:17
+-- Tiempo de generación: 08-03-2015 a las 22:37:02
 -- Versión del servidor: 5.5.40-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.6
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nombre`, `padre`, `rgb`, `orden`) VALUES
-(1, 'Autos', 0, '0', 2),
+(1, 'Autos', 0, '0', 0),
 (4, 'Volkswagen', 1, '0,0,0,0.7', 0),
 (5, 'Ford', 1, '0', 0),
 (8, 'Mercedes Benz', 3, '0', 0),
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `footer` (
 --
 
 INSERT INTO `footer` (`texto1`, `texto2`, `texto3`, `link1`, `link2`, `link3`, `background1`, `background2`, `background3`, `newsletter`) VALUES
-('texto1', 'texto2', 'texto3', 'link1', 'link2', 'link3', '', '', '', 'newsletter XD');
+('texto1', 'texto2', 'texto3\r\n\r\nLALALA\r\n\r\nLALALLA', 'link1', 'link2', 'link3', '', '', '', 'newsletter XD');
 
 -- --------------------------------------------------------
 
@@ -86,9 +86,10 @@ CREATE TABLE IF NOT EXISTS `general` (
   `float_logo` text NOT NULL,
   `colorBotonHover` text NOT NULL,
   `colorHr` text NOT NULL,
+  `colorPDF` text NOT NULL,
   `facebook` text NOT NULL,
   `twitter` text NOT NULL,
-  `google` text NOT NULL,
+  `youtube` text NOT NULL,
   `fontFace` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -96,8 +97,8 @@ CREATE TABLE IF NOT EXISTS `general` (
 -- Volcado de datos para la tabla `general`
 --
 
-INSERT INTO `general` (`color_fuente_banner`, `float_logo`, `colorBotonHover`, `colorHr`, `facebook`, `twitter`, `google`, `fontFace`) VALUES
-('000000', 'left', '100,0,0,0.6', 'ffa200', 'facebook.com', 'twitter.com', 'google.com', 'TrajanPro-Regular_1.otf');
+INSERT INTO `general` (`color_fuente_banner`, `float_logo`, `colorBotonHover`, `colorHr`, `colorPDF`, `facebook`, `twitter`, `youtube`, `fontFace`) VALUES
+('ffffff', 'left', '0,20,20,0.6', 'ff004e', 'FF6600', 'facebook.com', 'twitter.com', 'gg', 'sansation_light.woff');
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `modulos` (
   `colorHr` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `modulos`
@@ -160,7 +161,8 @@ INSERT INTO `modulos` (`id`, `categoria`, `titulo`, `alineacion`, `anchoTexto`, 
 (6, 4, '', '', 0, 0, 0, 0, 0, 1, '', '', '', ''),
 (7, 4, 'THIS IS AUDIO POST', 'right', 48, 50, 30, 1, 1, 3, 'Pendisse blandit ligula turpis, ac convallis risus fermentum non. Duis vestibulum quis quam vel accumsan. Nunc a vulputate lectus. Vestibulum eleifend nisl sed massa sagittis vestibulum. Vestibulum pretium blandit tellus, sodales volutpat sapien varius vel. Phasellus tristique cursus erat, a placerat tellus laoreet eget. Blandit ligula turpis, ac convallis risus fermentum non. Duis vestibulum quis.\r\n......................................................................................................\r\n\r\n<b>Gracias !!!</b>', 'modulos/1425577202.jpg', '', 'b2b2b2'),
 (8, 4, '', '', 0, 0, 0, 0, 0, 0, '', '', '', ''),
-(9, 4, 'Hola', 'left', 50, 45, 50, 1, 1, 4, 'Lalalala', 'modulos/1425577760.jpg', '', 'b2b2b2');
+(9, 4, 'Hola', 'left', 50, 45, 50, 1, 1, 4, 'Lalalala', 'modulos/1425577760.jpg', '', 'b2b2b2'),
+(10, 1, 'LALA HOME', 'left', 0, 0, 0, 0, 0, 0, '', '', '', '');
 
 -- --------------------------------------------------------
 

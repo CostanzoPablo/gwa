@@ -57,7 +57,7 @@ if ($html["error"] == null){
 		if ($_FILES["background3"] != null){
 			guardarImagen($_FILES["background3"], './footer/background3.png');
 		}		
-		$footer->actualizar($_POST["texto1"], $_POST["link1"], $_POST["texto2"], $_POST["link2"], $_POST["texto3"], $_POST["link3"], $_POST["newsletter"]);
+		$footer->actualizar($_POST["texto1"], $_POST["link1"], $_POST["texto2"], $_POST["link2"], $_POST["texto3"], $_POST["link3"], $_POST["newsletter"], $_POST["colorHr"]);
 	}
 	
 	$html["footer"] = $footer;

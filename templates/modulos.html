@@ -43,6 +43,9 @@
 				</div>
 			{% endif %}
 		{% else %}
+			{% if modulo.imagenes %}
+			<div class="fixGaleria"></div>
+			{% endif %}
 			{% for imagen in modulo.imagenes %}
 			<div class="galeria"><a href="{{imagen.image}}" data-lightbox="galeria{{modulo.categoria}}" data-title="{{imagen.imagen.titulo}} {{imagen.imagen.descripcion}}">
 

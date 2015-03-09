@@ -2,7 +2,7 @@
 include_once('./class/conectar.php');
 
 class Footer extends Conectar{
-	public $texto1, $texto2, $texto3, $link1, $link2, $link3, $background, $background1, $background2, $background3, $newsletter;
+	public $texto1, $texto2, $texto3, $link1, $link2, $link3, $background, $background1, $background2, $background3, $newsletter, $colorHr;
 
     public function __construct() {
     	$pdo = new Conectar();
@@ -20,6 +20,7 @@ class Footer extends Conectar{
 			$this->link2 = $row["link2"];
 			$this->link3 = $row["link3"];
 			$this->newsletter = $row["newsletter"];
+			$this->colorHr = $row["colorHr"];
 			if (file_exists('./footer/background.png')){
 				$this->background = './footer/background.png';
 			}else{
@@ -44,9 +45,9 @@ class Footer extends Conectar{
 		return $this;
 	}
 
-	public function actualizar($texto1, $link1, $texto2, $link2, $texto3, $link3, $newsletter){
-		$query = $this->db->prepare("UPDATE footer SET texto1 = :texto1, texto2 = :texto2, texto3 = :texto3, link1 = :link1, link2 = :link2, link3 = :link3, newsletter = :newsletter");		
-		$query->execute(array(':texto1' => $texto1, ':texto2' => $texto2, 'texto3' => $texto3, 'link1' => $link1, 'link2' => $link2, 'link3' => $link3, 'newsletter' => $newsletter));
+	public function actualizar($texto1, $link1, $texto2, $link2, $texto3, $link3, $newsletter, $colorHr){
+		$query = $this->db->prepare("UPDATE footer SET texto1 = :texto1, texto2 = :texto2, texto3 = :texto3, link1 = :link1, link2 = :link2, link3 = :link3, newsletter = :newsletter, colorHr = :colorHr");		
+		$query->execute(array(':texto1' => $texto1, ':texto2' => $texto2, 'texto3' => $texto3, 'link1' => $link1, 'link2' => $link2, 'link3' => $link3, 'newsletter' => $newsletter, 'colorHr' => $colorHr));
 		$this->texto1 = $texto1;
 		$this->texto2 = $texto2;
 		$this->texto3 = $texto3;
@@ -54,6 +55,7 @@ class Footer extends Conectar{
 		$this->link2 = $link2;
 		$this->link3 = $link3;
 		$this->newsletter = $newsletter;
+		$this->colorHr = $colorHr;		
 		return $this;
 	}
 

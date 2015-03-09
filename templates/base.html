@@ -22,6 +22,9 @@
         {% endblock %}
 
 <style>
+.open > .dropdown-menu{
+    background-color: rgba({{general.colorSubMenu}})!important;
+}
 .dropdown.open{
     background-color: rgba({{general.colorBotonHover}})!important;
 }
@@ -165,7 +168,7 @@ body {
                             {% endif %}
                         </td>
                         {% if footer.texto2 %}
-                        <td class="columnaFooter" style="background-color: #{{general.colorHr}};"></td>
+                        <td class="columnaFooter" style="background-color: #{{footer.colorHr}};"></td>
                         {% endif %}
                         <td valign="top">
                             {% if footer.texto2 %}
@@ -182,7 +185,7 @@ body {
                             {% endif %}
                         </td>
                         {% if footer.texto3 %}
-                        <td class="columnaFooter" style="background-color: #{{general.colorHr}};"></td>
+                        <td class="columnaFooter" style="background-color: #{{footer.colorHr}};"></td>
                         {% endif %}
                         <td valign="top">
                             {% if footer.texto3 %}
@@ -199,7 +202,7 @@ body {
                             {% endif %}
                         </td>   
                         {% if footer.newsletter %}
-                        <td class="columnaFooter" style="background-color: #{{general.colorHr}};"></td>    
+                        <td class="columnaFooter" style="background-color: #{{footer.colorHr}};"></td>    
                         {% endif %}
                         <td valign="top">
                             {% if footer.newsletter %}
@@ -207,7 +210,7 @@ body {
                                 <form method="post" action="./index.php?seccion=newsletter">
                                 <div>Suscribite al Newsletter !<br><br></div>
                                 <div><input size="20" type="text" name="email"></div>
-                                <input type="submit" value="Suscribirme">
+                                <input id="newsletterSubmit" type="submit" value="Suscribirme">
                                 </form>
                                 </div>
                             {% endif %}

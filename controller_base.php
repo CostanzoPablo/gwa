@@ -67,7 +67,6 @@ switch($_GET["seccion"]){
 		break;							
 	default:
 		include('./home.php');
-		$html['variable'] = 'mensaje'; 
 		echo $twig->render('modulos.html', $html);
 		break;
 }

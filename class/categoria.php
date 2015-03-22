@@ -41,7 +41,7 @@ class Categoria extends Conectar{
 			$pdfs = glob($directory . "*.*");
 			foreach($pdfs as $pdf){
 				$pdfAdapter["pdf"] = $pdf;
-				$pdfAdapter["nombre"] = 'nombre...';
+				$pdfAdapter["nombre"] = basename($pdf);
 				$this->pdfs[] = $pdfAdapter;
 			}					
 		}			

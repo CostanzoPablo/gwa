@@ -1,17 +1,74 @@
 -- phpMyAdmin SQL Dump
--- version 3.0.0-rc2
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 192.168.0.59
--- Tiempo de generación: 09-03-2015 a las 00:34:48
--- Versión del servidor: 5.5.34
--- Versión de PHP: 5.3.20
+-- Servidor: localhost
+-- Tiempo de generación: 22-03-2015 a las 16:48:20
+-- Versión del servidor: 5.5.40-0ubuntu0.14.04.1
+-- Versión de PHP: 5.5.9-1ubuntu4.6
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 --
--- Base de datos: `symbelmyne`
+-- Base de datos: `gwa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE IF NOT EXISTS `categorias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` text NOT NULL,
+  `padre` int(11) NOT NULL,
+  `rgb` text NOT NULL,
+  `orden` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nombre`, `padre`, `rgb`, `orden`) VALUES
+(1, 'Autos', 0, '0', 0),
+(4, 'Volkswagen', 1, '0,0,0,0.7', 0),
+(5, 'Ford', 1, '0', 0),
+(8, 'Mercedes Benz', 3, '0', 0),
+(12, 'jijiji23', 11, '0', 0),
+(14, 'Dormitorios', 13, '0', 0),
+(15, 'modelna', 13, '0', 0),
+(18, 'Dormitorios', 0, '0', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `footer`
+--
+
+CREATE TABLE IF NOT EXISTS `footer` (
+  `texto1` text NOT NULL,
+  `texto2` text NOT NULL,
+  `texto3` text NOT NULL,
+  `link1` text NOT NULL,
+  `link2` text NOT NULL,
+  `link3` text NOT NULL,
+  `background1` text NOT NULL,
+  `background2` text NOT NULL,
+  `background3` text NOT NULL,
+  `newsletter` text NOT NULL,
+  `colorHr` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `footer`
+--
+
+INSERT INTO `footer` (`texto1`, `texto2`, `texto3`, `link1`, `link2`, `link3`, `background1`, `background2`, `background3`, `newsletter`, `colorHr`) VALUES
+('texto1', 'texto2', 'texto3\r\n\r\nLALALA\r\n\r\nLALALLA', 'link1', 'link2', 'link3', '', '', '', 'newsletter XD', '');
 
 -- --------------------------------------------------------
 
@@ -33,8 +90,93 @@ CREATE TABLE IF NOT EXISTS `general` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcar la base de datos para la tabla `general`
+-- Volcado de datos para la tabla `general`
 --
 
 INSERT INTO `general` (`color_fuente_banner`, `float_logo`, `colorBotonHover`, `colorHr`, `colorPDF`, `facebook`, `twitter`, `youtube`, `fontFace`, `colorSubMenu`) VALUES
-('b6b6b6', 'left', '255,0,200,0.100', 'ff008a', 'FFFFFF', 'https://www.facebook.com/SYMBELFACE?fref=ts', '', 'https://www.youtube.com/results?search_query=symbelmyne', 'sansation_light.woff', '0,0,0,0.70');
+('ffffff', 'left', '0,20,20,0.6', 'ff004e', 'FF6600', 'facebook.com', 'twitter.com', 'gg', 'sansation_light.woff', '255,100,0,0.7');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagen`
+--
+
+CREATE TABLE IF NOT EXISTS `imagen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `modulo` int(11) NOT NULL,
+  `titulo` text NOT NULL,
+  `descripcion` text NOT NULL,
+  `imagen` text NOT NULL,
+  `red` int(11) NOT NULL,
+  `green` int(11) NOT NULL,
+  `blue` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Volcado de datos para la tabla `imagen`
+--
+
+INSERT INTO `imagen` (`id`, `modulo`, `titulo`, `descripcion`, `imagen`, `red`, `green`, `blue`) VALUES
+(10, 6, 'Blanquito', 'MuNIeco Blanco', './modulos/6/abc.jpg', 255, 255, 225),
+(11, 6, 'El Noble', 'Empanadas caseras', './modulos/6/1146594_549634695086168_698302897_n.jpg', 255, 255, 255);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `modulos`
+--
+
+CREATE TABLE IF NOT EXISTS `modulos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `categoria` int(11) NOT NULL,
+  `titulo` text NOT NULL,
+  `alineacion` text NOT NULL,
+  `anchoTexto` int(11) NOT NULL,
+  `anchoImagen` int(11) NOT NULL,
+  `altoImagen` int(11) NOT NULL,
+  `anchoVideo` int(11) NOT NULL,
+  `altoVideo` int(11) NOT NULL,
+  `orden` int(11) NOT NULL,
+  `texto` text NOT NULL,
+  `imagen` text NOT NULL,
+  `video` text NOT NULL,
+  `colorHr` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Volcado de datos para la tabla `modulos`
+--
+
+INSERT INTO `modulos` (`id`, `categoria`, `titulo`, `alineacion`, `anchoTexto`, `anchoImagen`, `altoImagen`, `anchoVideo`, `altoVideo`, `orden`, `texto`, `imagen`, `video`, `colorHr`) VALUES
+(1, 4, 'MAURIS AC RISUS NEQUE, UT PULVINAR RISUS', 'left', 20, 79, 30, 1, 1, 2, 'Pendisse blandit ligula turpis, ac convallis risus fermentum non. Duis vestibulum quis quam vel accumsan. Nunc a vulputate lectus. Vestibulum eleifend nisl sed massa sagittis vestibulum. Vestibulum pretium blandit tellus, sodales volutpat sapien varius vel. Phasellus tristique cursus erat, a placerat tellus laoreet eget. Blandit ligula turpis, ac convallis risus fermentum non. Duis vestibulum quis.', 'modulos/1425573979.jpg', '', 'b2b2b2'),
+(6, 4, '', '', 0, 0, 0, 0, 0, 1, '', '', '', ''),
+(7, 4, 'THIS IS AUDIO POST', 'right', 48, 50, 30, 1, 1, 3, 'Pendisse blandit ligula turpis, ac convallis risus fermentum non. Duis vestibulum quis quam vel accumsan. Nunc a vulputate lectus. Vestibulum eleifend nisl sed massa sagittis vestibulum. Vestibulum pretium blandit tellus, sodales volutpat sapien varius vel. Phasellus tristique cursus erat, a placerat tellus laoreet eget. Blandit ligula turpis, ac convallis risus fermentum non. Duis vestibulum quis.\r\n......................................................................................................\r\n\r\n<b>Gracias !!!</b>', 'modulos/1425577202.jpg', '', 'b2b2b2'),
+(8, 4, '', '', 0, 0, 0, 0, 0, 0, '', '', '', ''),
+(9, 4, 'Hola', 'left', 50, 45, 50, 1, 1, 4, 'Lalalala', 'modulos/1425577760.jpg', '', 'b2b2b2'),
+(10, 1, 'LALA HOME', 'left', 0, 0, 0, 0, 0, 0, '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mail` text NOT NULL,
+  `clave` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `mail`, `clave`) VALUES
+(2, 'costanzo_pablo@hotmail.com', '123456');

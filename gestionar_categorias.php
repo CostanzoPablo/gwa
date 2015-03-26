@@ -96,7 +96,7 @@ if ($html["error"] == null){
 				}
 			}
 			if (isset($_GET["agregarGaleria"])){
-				$nuevoModulo = (new Modulo)->nuevo($categoria->id, '', '', '', '', '', $_POST["orden"], '', '');
+				$nuevoModulo = (new Modulo)->nuevo($categoria->id, '', '', '', '', '', $_POST["orden"], '', '', '');
 				for($i=0; $i<count($_FILES['imagenes']['name']); $i++) {
 				  //Get the temp file path
 				  $tmpFilePath = $_FILES['imagenes']['tmp_name'][$i];

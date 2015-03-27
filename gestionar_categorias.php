@@ -65,9 +65,9 @@ if ($html["error"] == null){
 				//buscar si existe descripcion para la $_GET["imagen"] de la galeria $_GET["editarGaleria"]
 				$imagen = (new Imagen)->buscarPorModuloConImagen($_GET["editarImagenGaleria"], $_GET["imagen"]);
 				if ($imagen->id == null){//crear	
-					$imagen = (new Imagen)->nuevo($_GET["editarImagenGaleria"], $_GET["imagen"], $_POST["titulo"], $_POST["descripcion"], $_POST["rgb"]);
+					$imagen = (new Imagen)->nuevo($_GET["editarImagenGaleria"], $_GET["imagen"], $_POST["titulo"], $_POST["descripcion"], $_POST["red"], $_POST["green"], $_POST["blue"]);
 				}else{//editarla
-					$imagen->editarImagen($_GET["editarImagenGaleria"], $_GET["imagen"], $_POST["titulo"], $_POST["descripcion"], $_POST["rgb"]); 
+					$imagen->editarImagen($_GET["editarImagenGaleria"], $_GET["imagen"], $_POST["titulo"], $_POST["descripcion"], $_POST["red"], $_POST["green"], $_POST["blue"]); 
 				}
 			}
 			if (isset($_GET["editarGaleria"])){
@@ -96,7 +96,7 @@ if ($html["error"] == null){
 				}
 			}
 			if (isset($_GET["agregarGaleria"])){
-				$nuevoModulo = (new Modulo)->nuevo($categoria->id, '', '', '', '', '', $_POST["orden"], '', '');
+				$nuevoModulo = (new Modulo)->nuevo($categoria->id, '', '', '', '', '', $_POST["orden"], '', '', '');
 				for($i=0; $i<count($_FILES['imagenes']['name']); $i++) {
 				  //Get the temp file path
 				  $tmpFilePath = $_FILES['imagenes']['tmp_name'][$i];

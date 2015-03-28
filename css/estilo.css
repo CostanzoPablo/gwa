@@ -49,6 +49,7 @@ body{
 #identificarse-registrarse{
 	right: 0;
 	position: absolute;
+	z-index: 99999999;
 }
 
 #menu{

@@ -413,7 +413,9 @@
 		</tr>
 		<tr>
 			<td colspan="2" style="height:300px">
+				{% if modulo.imagen %}
 				<div style="background-size: 100% auto; background-repeat: no-repeat; width: 100%; height:100%; background-image: url('{{modulo.imagen}}');	background-position: center;"></div>			
+				{% endif %}
 			</td>
 		</tr>
 		<tr>
@@ -497,7 +499,7 @@
 			</form>
 			<table id="agregarGaleria2" class="tablaFormulario">	
 			<tr>
-				<td colspan="2">
+				<td>
 					{% for imagen in modulo.imagenes %}
 					<form method="post" action="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;editarImagenGaleria={{modulo.id}}&amp;imagen={{imagen.image}}">
 					<div class="continuo">
@@ -531,7 +533,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center">
+				<td align="center">
 					<a href="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;eliminarModulo={{modulo.id}}"><span class="glyphicon glyphicon-trash eliminar" aria-hidden="true"></span></a>
 				</td>
 			</tr>		

@@ -44,6 +44,20 @@ function guardarImagen($imagen, $ruta){
 if ($html["error"] == null){
 	$footer = (new Footer)->buscar();
 
+	if (isset($_GET["eliminar"])){
+		switch ($_GET["eliminar"]) {
+			case 'footer1':
+				unlink('./footer/background1.png');	
+				break;
+			case 'footer2':
+				unlink('./footer/background2.png');	
+				break;			
+			case 'footer3':
+				unlink('./footer/background3.png');	
+				break;				
+		}
+	}
+
 	if (isset($_GET["guardar"])){
 		if ($_FILES["background"] != null){
 			guardarImagen($_FILES["background"], './footer/background.png');
@@ -57,7 +71,7 @@ if ($html["error"] == null){
 		if ($_FILES["background3"] != null){
 			guardarImagen($_FILES["background3"], './footer/background3.png');
 		}		
-		$footer->actualizar($_POST["texto1"], $_POST["link1"], $_POST["texto2"], $_POST["link2"], $_POST["texto3"], $_POST["link3"], $_POST["newsletter"], $_POST["colorHr"]);
+		$footer->actualizar($_POST["texto1"], $_POST["link1"], $_POST["texto2"], $_POST["link2"], $_POST["texto3"], $_POST["link3"], $_POST["newsletter"], $_POST["colorHr"], $_POST["colorFuente"]);
 	}
 	
 	$html["footer"] = $footer;

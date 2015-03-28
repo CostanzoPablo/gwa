@@ -20,7 +20,7 @@ function cmp($a, $b){
 }
 
 class Categoria extends Conectar{
-	public $id, $nombre, $padre, $rgb, $orden, $pdfs;
+	public $id, $nombre, $padre, $rgb, $orden, $contacto, $pdfs;
 
     public function __construct() {
     	$pdo = new Conectar();
@@ -37,6 +37,7 @@ class Categoria extends Conectar{
 			$this->padre = $row["padre"];
 			$this->rgb = $row["rgb"];
 			$this->orden = $row["orden"];
+			$this->contacto = $row["contacto"];
 			$directory = './pdf/'.$row["id"].'/';
 			$pdfs = glob($directory . "*.*");
 			foreach($pdfs as $pdf){
@@ -56,6 +57,7 @@ class Categoria extends Conectar{
 			$this->nombre = $row["nombre"];
 			$this->padre = $row["padre"];
 			$this->orden = $row["orden"];
+			$this->contacto = $row["contacto"];
 		}			
 		return $this;
 	}
@@ -85,6 +87,13 @@ class Categoria extends Conectar{
 		$query = $this->db->prepare("UPDATE categorias SET orden = :orden WHERE id = '$this->id'");		
 		$query->execute(array(':orden' => $orden));
 		$this->orden = $orden;
+		return $this;
+	}
+
+	public function editarContacto($contacto){
+		$query = $this->db->prepare("UPDATE categorias SET contacto = :contacto WHERE id = '$this->id'");		
+		$query->execute(array(':contacto' => $contacto));
+		$this->contacto = $contacto;
 		return $this;
 	}
 

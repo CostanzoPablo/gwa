@@ -155,7 +155,7 @@ body {
                     <tr>
                         <td valign="top">
                             {% if footer.texto1 %}
-                            <div class="footerTexto">{{footer.texto1|nl2br}}</div>
+                            <div class="footerTexto" style="color:{{footer.colorFuente}}">{{footer.texto1|nl2br}}</div>
                             {% endif %}
                             {% if footer.link1 %}
                                 <a href="{{footer.link1}}" target="_blank">
@@ -172,7 +172,7 @@ body {
                         {% endif %}
                         <td valign="top">
                             {% if footer.texto2 %}
-                            <div class="footerTexto">{{footer.texto2|nl2br}}</div>
+                            <div class="footerTexto" style="color:{{footer.colorFuente}}">{{footer.texto2|nl2br}}</div>
                             {% endif %}
                             {% if footer.link2 %}
                                 <a href="{{footer.link2}}" target="_blank">
@@ -189,7 +189,7 @@ body {
                         {% endif %}
                         <td valign="top">
                             {% if footer.texto3 %}
-                            <div class="footerTexto">{{footer.texto3|nl2br}}</div>
+                            <div class="footerTexto" style="color:{{footer.colorFuente}}">{{footer.texto3|nl2br}}</div>
                             {% endif %}
                             {% if footer.link3 %}
                                 <a href="{{footer.link3}}" target="_blank">
@@ -208,7 +208,7 @@ body {
                             {% if footer.newsletter %}
                                 <div class="footerNewsletter">
                                 <form method="post" action="./index.php?seccion=newsletter">
-                                <div>Suscribite al Newsletter !<br><br></div>
+                                <div style="color:{{footer.colorFuente}}">Suscribite al Newsletter !<br><br></div>
                                 <div><input size="20" type="text" name="email"></div>
                                 <input id="newsletterSubmit" type="submit" value="Suscribirme">
                                 </form>

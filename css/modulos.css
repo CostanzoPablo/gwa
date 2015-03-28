@@ -156,3 +156,17 @@
 	float:right;
 	margin-right: 1em;
 }
+
+
+#contacto{
+	padding-bottom: 3em;
+}
+
+#contactoOK{
+	font-size: 2em;
+}
+
+#contactoERROR{
+	font-size: 2em;
+	color:#AA0000;
+}

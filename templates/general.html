@@ -143,10 +143,17 @@
 						<option value="TrajanPro-Regular_1.otf">TrajanPro-Regular_1.otf</option>
 					{% endif %}						
 
-						
-						SERIFAT_1.ttf
-						TrajanPro-Regular_1.otf
-					
+					{% if general.fontFace == 'verdana.ttf' %}
+						<option selected value="verdana.ttf">Verdana.ttf</option>
+					{% else %}
+						<option value="verdana.ttf">Verdana.ttf</option>
+					{% endif %}
+
+					{% if general.fontFace == 'arial.ttf' %}
+						<option selected value="arial.ttf">Arial.ttf</option>
+					{% else %}
+						<option value="arial.ttf">Arial.ttf</option>
+					{% endif %}						
 
 					</select>
 				</td>

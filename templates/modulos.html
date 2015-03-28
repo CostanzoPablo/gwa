@@ -3,6 +3,7 @@
 {% block head %}
 	{{ parent() }}
 	<link rel="stylesheet" href="css/modulos.css" />
+	<script type="text/javascript" src="js/contacto.js"></script>  
 {% endblock %}
 
 {% block title %}
@@ -26,7 +27,21 @@
 </div>
 {% endif %}
 
+
 <div id="contenedor" style="background-color: rgba({{categoria.rgb}});">
+
+{% if categoria.contacto %}
+	<div id="contactoOK" class="oculto">Formulario enviado correctamente !</div>
+	<form id="contacto" method="post" action="./contacto.php?categoria={{categoria.id}}">
+	<div>Apellido y Nombre</div><div><input type="text" name="apellido"></div>
+	<div>Asunto </div><div><input type="text" name="asunto"></div>
+	<div>Mensaje</div><div><textarea name="mensaje" cols="30" rows="3"></textarea></div>
+	<div></div>
+	<input type="submit" value="ENVIAR">
+	<div id="contactoERROR" class="oculto">Error al enviar el mensaje ! Reintentar . . .</div>
+	</form>
+{% endif %}
+
 	{% for modulo in modulos %}
 		<div class="modulo">
 		{% if modulo.alineacion %}

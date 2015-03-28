@@ -57,6 +57,7 @@ if ($html["error"] == null){
 					$categoria->editarPadre($_POST["padre"]);
 					$categoria->editarColorFondo($_POST["rgb"]);
 					$categoria->editarOrden($_POST["orden"]);
+					$categoria->editarContacto($_POST["contacto"]);
 				}
 			}
 

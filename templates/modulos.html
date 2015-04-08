@@ -12,7 +12,9 @@
 
 {% block contenido %}
 
-{{ include('carousel.html') }}
+{% if images %}
+	{{ include('carousel.html') }}
+{% endif %}
 
 {% if categoria.pdfs %}
 <div id="files" style="background-color:#{{general.colorHr}}">

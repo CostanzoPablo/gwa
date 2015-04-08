@@ -159,10 +159,10 @@ padding-bottom: 1.5em !important;
 	/*height: 80px!important;*/
 	background-size: 100% 100%;
 	left: 50%;
-	margin-left: -1000px;
+	margin-left: -50%;
 	position: absolute;
-	min-width: 2100px;
-	max-width: 2100px;	
+	width: 100%;
+	margin-right: 0px;
 }
 
 #footer{

@@ -89,7 +89,6 @@
 	</form>
 </div>
 
-{%if categoria.orden != 0 %}
 <div class="formulario">
 	<form method="post" action="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;agregarModulo=true" enctype="multipart/form-data">
 	<table class="tablaFormulario accion" onclick="openClose('agregarModulo');">
@@ -302,11 +301,57 @@
 
 
 
+<div class="formulario">
+	<table class="tablaFormulario accion" onclick="openClose('gestionarPDFFOOTER');">
+	<tr>
+		<td>
+			<h3>GESTIONAR PDF FOOTER</h3>
+		</td>
+	</tr>
+	</table>
+
+<div id="gestionarPDFFOOTER" class="oculto"> 
+<hr>
+		<div class="formulario">
+			<form method="post" action="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;editarPDFFOOTER={{categoria.id}}" enctype="multipart/form-data">
+			<table id="agregarGaleria" class="tablaFormulario">	
+			<tr>
+				<td>
+					Nuevo/s PDF
+				</td>
+				<td>
+					<input type="file" name="pdfs[]" multiple="multiple">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="AGREGAR LO/s PDF">
+				</td>
+			</tr>		
+			</table>
+			</form>
+			<table id="agregarPDF2" class="tablaFormulario">	
+			<tr>
+				<td colspan="2">
+					{% for pdf in categoria.pdfsfooter %}
+					<div class="continuo">
+						<div class="continuo">
+						<a href="{{pdf.pdf}}">{{pdf.nombre}}</a>
+						</div>
+						<a href="./index.php?seccion=gestionar_categorias&amp;gestionar_categoria={{categoria.id}}&amp;eliminarPDFfooter={{pdf.pdf}}"><span class="glyphicon glyphicon-trash eliminar" aria-hidden="true"></span></a>
+					</div>
+					{% endfor %}
+				</td>
+			</tr>	
+			</table>
+		</div>
+</div>
+
+</div>
 
 
-{% else %}
-<div>Seteando el ORDEN en 0 activa la edicion de la categoria para ser pagina principal</div>
-{% endif %}
+
+
 
 
 

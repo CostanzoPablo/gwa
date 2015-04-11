@@ -8,8 +8,12 @@
 		$message = '<html>
 		<body bgcolor="C0C0C0">
 		  Apellido y Nombre: '.$_POST["apellido"].'<br><br>
-		  Asunto: '.$_POST["asunto"].'<br><br>
-		  Mensaje: '.$_POST["mensaje"].'<br><br>
+		  Empresa: '.$_POST["empresa"].'<br><br>
+		  Email: '.$_POST["email"].'<br><br>
+		  Ciudad: '.$_POST["ciudad"].'<br><br>
+		  Pais: '.$_POST["pais"].'<br><br>
+		  Telefono: '.$_POST["telefono"].'<br><br>
+		  Comentarios: '.$_POST["comentarios"].'<br><br>
 		  <br><br><br>
 		</body>
 		</html>';

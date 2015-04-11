@@ -16,7 +16,7 @@ body{
 }
 
 .oculto{
-	display: none;
+	display: none!important;
 }
 
 
@@ -60,7 +60,7 @@ body{
 
 .nav-pills{
 	height: 1px !important;
-	padding-left:20%!important;
+	padding-left:11%!important;
 }
 
 #banner-divider{
@@ -89,9 +89,52 @@ margin-bottom: -1.5em !important;
 padding-bottom: 1.5em !important;	
 }
 
-.logo{
-	/*width: 120px; 
-	height: 40px;*/
+.logoLeft{
+	float:left;
+	padding-left: 2em;
+}
+
+.logoRight{
+	position: absolute;
+	right:25%;
+}
+
+@media (max-width: 1919px) {
+	.logoRight{
+		right:10%;
+	}
+}
+
+@media (max-width: 988px) {
+	.container{
+		margin-left:0!important;
+	}
+	.navbar{
+		font-size: 0.8em;
+	}
+	.logo{
+		width: 70%;
+	}
+	.logoRight{
+		right:5%;
+	}
+	#contenedor{
+		margin-left: 4%!important;
+
+	}
+	#screen{
+		margin-top: 2.1em;
+	}
+	#tablaFooter{
+		margin-left:8%!important;
+	}
+	#subTitulo{
+		margin-left: 11.9%!important;
+	}
+	#filesContainer{
+		width: 100% !important;
+		margin-left: 0!important;
+	}
 }
 
 .dropdown-menu{
@@ -171,7 +214,6 @@ padding-bottom: 1.5em !important;
 
 #contenido{
 	min-height: 400px;
-	margin-bottom: 2em;
 }
 
 .columnaFooter{
@@ -185,4 +227,12 @@ padding-bottom: 1.5em !important;
 .fixGaleria{
 	width: 100%;
 	height: 55px;
+}
+
+.continuo{
+	display: inline-block;
+}
+
+.topSpacing{
+	margin-top: 0.5em;
 }

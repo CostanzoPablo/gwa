@@ -1,6 +1,8 @@
 <?php
 require_once('./administrar.php');
 
+$html["images"] = getImagesForSlider();
+
 function getExtension($str) {
 	$i = strrpos($str,".");
 	if (!$i) { return ""; } 

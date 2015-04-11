@@ -17,6 +17,9 @@ if ($html["error"] == null){
 			if (isset($_GET["eliminarPDF"])){
 				unlink($_GET["eliminarPDF"]);
 			}
+			if (isset($_GET["eliminarPDFfooter"])){
+				unlink($_GET["eliminarPDFfooter"]);
+			}			
 			if (isset($_GET["editarPDF"])){
 				for($i=0; $i<count($_FILES['pdfs']['name']); $i++) {
 				  //Get the temp file path
@@ -32,6 +35,30 @@ if ($html["error"] == null){
 		    			mkdir('pdf/'.$_GET["editarPDF"], 0777, true);
 					}					
 				    $newFilePath = './pdf/'.$_GET["editarPDF"].'/'.$_FILES['pdfs']['name'][$i];
+
+				    //Upload the file into the temp dir
+				    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+				    	//ok
+				    }
+				  }
+				}
+			}
+
+			if (isset($_GET["editarPDFFOOTER"])){
+				for($i=0; $i<count($_FILES['pdfs']['name']); $i++) {
+				  //Get the temp file path
+				  $tmpFilePath = $_FILES['pdfs']['tmp_name'][$i];
+
+				  //Make sure we have a filepath
+				  if ($tmpFilePath != ""){
+				    //Setup our new file path
+				    if (!file_exists('pdffooter')) {
+		    			mkdir('pdffooter', 0777, true);
+					}
+					if (!file_exists('pdffooter/'.$_GET["editarPDFFOOTER"])) {
+		    			mkdir('pdffooter/'.$_GET["editarPDFFOOTER"], 0777, true);
+					}					
+				    $newFilePath = './pdffooter/'.$_GET["editarPDFFOOTER"].'/'.$_FILES['pdfs']['name'][$i];
 
 				    //Upload the file into the temp dir
 				    if(move_uploaded_file($tmpFilePath, $newFilePath)) {

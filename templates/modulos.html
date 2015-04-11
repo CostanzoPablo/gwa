@@ -17,6 +17,7 @@
 {% endif %}
 
 {% if categoria.pdfs %}
+<div id="subTitulo"><font color="#{{general.colorPDF}}">{{categoria.nombre}}</font></div>
 <div id="files" style="background-color:#{{general.colorHr}}">
 	<div id="filesContainer">
 	{% for pdf in categoria.pdfs %}
@@ -27,18 +28,28 @@
 	{% endfor %}
 	</div>
 </div>
+<div id="filesFix"></div>
 {% endif %}
 
 
 <div id="contenedor" style="background-color: rgba({{categoria.rgb}});">
 
 {% if categoria.contacto %}
-	<div id="contactoOK" class="oculto">Formulario enviado correctamente !</div>
+	<style>
+	.modulo{
+		width: 45%;
+	}
+	</style>
+	<div id="contactoOK" class="oculto">Gracias por completar nuestro formulario de contacto ... a la brevedad contestaremos su consulta.</div>
 	<form id="contacto" method="post" action="./contacto.php?categoria={{categoria.id}}">
-	<div>Apellido y Nombre</div><div><input type="text" name="apellido"></div>
-	<div>Asunto </div><div><input type="text" name="asunto"></div>
-	<div>Mensaje</div><div><textarea name="mensaje" cols="30" rows="3"></textarea></div>
-	<div></div>
+	<div>Nombre y Apellido:</div><div><input size="35" type="text" name="apellido" required></div>
+	<div>Empresa:</div><div><input type="text" name="empresa" size="35"></div>
+	<div>E-mail: </div><div><input type="text" name="email" size="35"></div>
+	<div>Ciudad:</div><div><input type="text" name="ciudad" size="35"></div>
+	<div>Pais:</div><div><input type="text" name="pais" size="35"></div>
+	<div>Telefono:</div><div><input type="text" name="telefono" size="35"></div>
+	<div>Comentarios: </div><div><textarea name="comentarios" cols="33" rows="3"></textarea></div>
+	<div><br></div>
 	<input type="submit" value="ENVIAR">
 	<div id="contactoERROR" class="oculto">Error al enviar el mensaje ! Reintentar . . .</div>
 	</form>
@@ -80,4 +91,18 @@
 		<div class="hr" style="background-color: #{{modulo.colorHr}};"></div>
 	{% endfor %}
 </div>
+
+{% if categoria.pdfsfooter %}
+<div id="filesFooter" style="background-color:#{{general.colorHr}}">
+	<div id="filesContainer">
+	{% for pdf in categoria.pdfsfooter %}
+		<div class="file">
+			<div class="fileImage continuo"><a href="{{pdf.pdf}}"><img src="./images/pdf.png" width="40px" height="50px"></a></div>
+			<div class="fileNombre continuo"><font color="#{{general.colorPDF}}">{{pdf.nombre}}</font></div>
+		</div>
+	{% endfor %}
+	</div>
+</div>
+{% endif %}
+
 {% endblock %}

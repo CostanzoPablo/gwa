@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	ini_set('display_errors', false);
+	ini_set('display_errors', true);
 	//error_reporting(E_ALL);
 
 	require_once './vendor/autoload.php';
@@ -11,6 +11,8 @@
 	    //'cache' => './cache',
 	    'cache' => false,
 	));
+
+	include_once('./funciones.php');
 
 	require_once('./class/general.php');
 	$html["general"] = (new General)->buscar();

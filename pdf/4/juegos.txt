@@ -1,6 +1,0 @@
-1) Amaca
-2) Oso
-3) Beer
-4) RGB Balls
-5) Laberinto
-	

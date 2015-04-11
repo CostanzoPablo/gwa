@@ -7,7 +7,7 @@
 	margin-left:26%;
 	background-color: rgba(0,0,0,0.2);
 	margin-top: 0px;
-	padding-top: 0px;	
+	padding-top: 1em;	
 }
 
 @media (max-width: 1919px) {
@@ -139,7 +139,33 @@
 	margin-bottom: 1em;
 }
 
+#subTitulo{
+	position:fixed;
+	z-index: 1;
+	font-size: 1.5em;
+	margin-top: 0.5em;
+	margin-left: 27.5%;
+}
+
+@media (max-width: 1919px) {
+	#subTitulo{
+		margin-left: 17%;
+	}
+}
+
 #files{
+	width: 100%;
+	height: 65px;
+	padding-bottom: 1em;
+	position: fixed;
+}
+
+#filesFooter{
+	width: 100%;
+	height: 65px;
+}
+
+#filesFix{
 	width: 100%;
 	height: 65px;
 	padding-bottom: 1em;
@@ -160,10 +186,12 @@
 
 #contacto{
 	padding-bottom: 3em;
+	width: 45%;
+	display: inline-block;
 }
 
 #contactoOK{
-	font-size: 2em;
+	font-size: 1em;
 }
 
 #contactoERROR{

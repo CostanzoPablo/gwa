@@ -4,6 +4,9 @@
 	{{ parent() }}
 	<link rel="stylesheet" href="css/categoria.css" />
 	<script src="./js/nueva_categoria.js"></script>
+	<script src="vendor/tinymce/tinymce.min.js"></script>
+<script>tinymce.init({selector:'textarea'});</script>
+
 {% endblock %}
 
 {% block contenido %}

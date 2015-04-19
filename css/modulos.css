@@ -162,7 +162,7 @@
 
 #filesFooter{
 	width: 100%;
-	height: 65px;
+	display: inline-block;
 }
 
 #filesFix{

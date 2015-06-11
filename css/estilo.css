@@ -153,10 +153,9 @@ padding-bottom: 1.5em !important;
 
 .navbar-fixed-top{
 	background: url(../images/banner.png) no-repeat center center;
-	background-size: 100%;
 	background-position: center top; 
 	/*height: 80px!important;*/
-	background-size: 100% 100%;
+	background-size: 1940px 100%;
 }
 
 .identificar{
@@ -182,7 +181,7 @@ padding-bottom: 1.5em !important;
 	width: 902px;
 	margin-left:26%;
 	text-align: justify;
-	border-spacing: 2em;
+	border-spacing: 1em;
     border-collapse: separate;
 }
 
@@ -217,7 +216,7 @@ padding-bottom: 1.5em !important;
 }
 
 .columnaFooter{
-	min-width: 0.1em;
+	min-width: 0.06em;
 }
 
 #newsletterSubmit{

@@ -57,11 +57,23 @@ body {
   display: block;
   position: absolute;
   top: 0;
-  left: 50%;
+  /*left: 50%;
   margin-left: -1000px;
   min-width: 2100px;
-  max-width: 2100px;
+  max-width: 2100px;*/
   height: 500px;
+}
+
+@media (max-width: 900px) {
+  .carousel {
+    height: 250px;
+  }
+  .carousel .item {
+    height: 250px;
+  }
+  .carousel-inner > .item > img {
+    height: 250px;
+  }
 }
 
 
